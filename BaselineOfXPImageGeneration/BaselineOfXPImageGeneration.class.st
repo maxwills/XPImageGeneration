@@ -16,6 +16,5 @@ BaselineOfXPImageGeneration >> baseline: spec [
 			baseline: 'DebuggingSpy'
 			with: [ 
 			spec repository: 'github://StevenCostiou/DebuggingSpy:master' ]."
-		spec package: 'XPImageGeneration'.
 		spec package: 'XPImageGeneration-Core' ]
 ]
