@@ -20,8 +20,8 @@ XPImageGeneration class >> fixRichTextComposerErrorForClassNamed: className [
 { #category : #actions }
 XPImageGeneration class >> fixRichTextComposerErrors [
 
-	self fixRichTextComposerErrorForClassNamed: 'ClyRichTextClassCommentEditorToolMorph'.
-	self fixRichTextComposerErrorForClassNamed: 'ClyPackageRichTextCommentEditorToolMorph'.
+	self fixRichTextComposerErrorForClassNamed: #ClyRichTextClassCommentEditorToolMorph.
+	self fixRichTextComposerErrorForClassNamed: #ClyPackageRichTextCommentEditorToolMorph.
 ]
 
 { #category : #'as yet unclassified' }
