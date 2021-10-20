@@ -24,6 +24,13 @@ XPImageGeneration class >> fixRichTextComposerErrors [
 	self fixRichTextComposerErrorForClassNamed: #ClyPackageRichTextCommentEditorToolMorph.
 ]
 
+{ #category : #actions }
+XPImageGeneration class >> generateImage [
+
+	self loadBaselines.
+	self install
+]
+
 { #category : #'as yet unclassified' }
 XPImageGeneration class >> getClassNamed: aString [
 
@@ -36,4 +43,16 @@ XPImageGeneration class >> install [
 	"Executed after the baseline. Fixes some bugs"
 
 	self fixRichTextComposerErrors
+]
+
+{ #category : #'as yet unclassified' }
+XPImageGeneration class >> loadBaselines [
+
+	"Silent-ish loading"
+
+	Metacello new
+		baseline: 'Phex';
+		repository: 'github://maxwills/Phex:main';
+		onWarning: [ :ex | ex resume ];
+		load
 ]
