@@ -10,7 +10,12 @@ BaselineOfXPImageGeneration >> baseline: spec [
 	<baseline>
 	spec for: #common do: [ 
 		spec
-			package: #'MonticelloTonel-Core';
-			package: #'MonticelloTonel-FileSystem'
-			with: [ spec requires: #( 'MonticelloTonel-Core' ) ] ]
+			baseline: 'XPImageGeneration'
+			with: [ spec repository: 'github://maxwills/Phex:main' ].
+		"spec
+			baseline: 'DebuggingSpy'
+			with: [ 
+			spec repository: 'github://StevenCostiou/DebuggingSpy:master' ]."
+
+		spec package: 'XPImageGeneration' ]
 ]
