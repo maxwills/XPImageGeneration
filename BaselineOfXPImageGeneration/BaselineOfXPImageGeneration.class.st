@@ -10,7 +10,7 @@ BaselineOfXPImageGeneration >> baseline: spec [
 	<baseline>
 	spec for: #common do: [ 
 		spec
-			baseline: 'XPImageGeneration'
+			baseline: 'Phex'
 			with: [ spec repository: 'github://maxwills/Phex:main' ].
 		"spec
 			baseline: 'DebuggingSpy'
