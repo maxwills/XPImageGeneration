@@ -11,5 +11,9 @@ Metacello new
 	onDowngrade: [ :ex | ex useIncoming ];
 	onWarning: [ :ex | Transcript crShow: ex ];
 	load.
+	
+#XPImageGeneration asClass install
 
 ```
+
+
