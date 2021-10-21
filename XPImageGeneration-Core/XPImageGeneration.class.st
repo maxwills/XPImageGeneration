@@ -52,7 +52,7 @@ XPImageGeneration class >> loadBaselines [
 
 	Metacello new
 		baseline: 'Phex';
-		repository: 'github://maxwills/Phex:main';
+		repository: 'github://Pharo-XP-Tools/Phex:xp-tools';
 		onWarning: [ :ex | ex resume ];
 		load
 ]
