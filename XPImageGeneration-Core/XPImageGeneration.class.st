@@ -28,6 +28,7 @@ XPImageGeneration class >> fixRichTextComposerErrors [
 XPImageGeneration class >> generateImage [
 
 	self loadBaselines.
+	self loadExperimentsPackage.
 	self install
 ]
 
@@ -55,4 +56,18 @@ XPImageGeneration class >> loadBaselines [
 		repository: 'github://Pharo-XP-Tools/Phex:xp-tools';
 		onWarning: [ :ex | ex resume ];
 		load
+]
+
+{ #category : #'as yet unclassified' }
+XPImageGeneration class >> loadExperimentsPackage [
+
+	"Loads the unloaded package Experiments"
+
+	"Why not including it in the baseline? 
+Experiments package depends on Phex.
+The image generation baseline internally executes the other baselines. So, dependencies are hidden from this baseline. By including the Experiments package in the baseline, Iceberg will try to load the Experiment package before executing the baselines (which produces a dependency error). A possible (untested) solution would be to put the baseline execution as a preload action, however, this class (XPImageGeneration) would not be loaded yet. "
+
+	(IceRepository repositories select: [ :r | 
+		 r name = 'XPImageGeneration' ]) first workingCopy 
+		loadPackageNamed: #Experiments
 ]
