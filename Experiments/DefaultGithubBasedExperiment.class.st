@@ -24,7 +24,10 @@ DefaultGithubBasedExperiment class >> addTaskToExperimentRepository: aPhexTask [
 		ws nextPutAll: (STON toString: aPhexTask) ].
 	repoDummy iceRepository addFileToIndex:
 		repoDummy relativeTasksDirectory / taskFileName.
-	repoDummy iceRepository commitWithMessage: taskFileName.
+	repoDummy iceRepository workingCopy
+		commitChanges: repoDummy iceRepository workingCopyDiff
+		withMessage: taskFileName
+		force: true.
 	repoDummy iceRepository push
 ]
 
