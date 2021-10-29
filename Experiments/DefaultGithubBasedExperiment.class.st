@@ -18,6 +18,7 @@ DefaultGithubBasedExperiment class >> addTaskToExperimentRepository: aPhexTask [
 	exp := self currentExperiment.
 	tasksDir := exp ensureTasksDefinitionFolder.
 	repoDummy := self currentExperiment.
+	repoDummy ensureUpstream.
 	taskFileName := aPhexTask taskId , '.ptx'.
 	tasksDir / taskFileName writeStreamDo: [ :ws | 
 		ws nextPutAll: (STON toString: aPhexTask) ].
@@ -53,6 +54,14 @@ DefaultGithubBasedExperiment >> ensureTasksDefinitionFolder [
 	dir := self tasksDirectory.
 	dir ensureCreateDirectory.
 	^ dir
+]
+
+{ #category : #'as yet unclassified' }
+DefaultGithubBasedExperiment >> ensureUpstream [
+
+	| remote |
+	remote := self iceRepository remotes first.
+	self iceRepository branch setUpstreamIfMissing: remote
 ]
 
 { #category : #'as yet unclassified' }
