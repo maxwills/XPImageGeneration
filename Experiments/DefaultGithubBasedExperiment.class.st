@@ -23,7 +23,9 @@ DefaultGithubBasedExperiment class >> addTaskToExperimentRepository: aPhexTask [
 	tasksDir / taskFileName writeStreamDo: [ :ws | 
 		ws nextPutAll: (STON toString: aPhexTask) ].
 	repoDummy iceRepository addFileToIndex:
-		repoDummy relativeTasksDirectory / taskFileName
+		repoDummy relativeTasksDirectory / taskFileName.
+	repoDummy iceRepository commitWithMessage: taskFileName.
+	repoDummy iceRepository push
 ]
 
 { #category : #accessing }
