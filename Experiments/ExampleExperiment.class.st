@@ -1,6 +1,6 @@
 Class {
 	#name : #ExampleExperiment,
-	#superclass : #DefaultExperiment,
+	#superclass : #DefaultGithubBasedExperiment,
 	#category : #Experiments
 }
 
@@ -18,6 +18,26 @@ Therefore, use only filename-friendly characters.
 "
 
 	^ 'example-experiment-id'
+]
+
+{ #category : #'as yet unclassified' }
+ExampleExperiment >> gitOwner [
+
+	"Should return the owner of the git, to create the url"
+
+	"The repository should be your fork"
+
+	^ 'Pharo-XP-Tools'
+]
+
+{ #category : #'as yet unclassified' }
+ExampleExperiment >> gitRepositoryName [
+
+	"Should return the name of the git repository, to create the url"
+
+	"The repository should be your fork"
+
+	^ 'XPImageGeneration'
 ]
 
 { #category : #accessing }
