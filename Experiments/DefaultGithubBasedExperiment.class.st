@@ -116,8 +116,5 @@ DefaultGithubBasedExperiment >> sequentialTasks [
 { #category : #'as yet unclassified' }
 DefaultGithubBasedExperiment >> tasksDirectory [
 
-	| tasksDirectory |
-	^ tasksDirectory ifNil: [ 
-		  tasksDirectory := self iceRepository location / 'tasksDefinition'
-		                    / self experienceId ]
+	^ self iceRepository location / 'tasksDefinition' / self experienceId
 ]
