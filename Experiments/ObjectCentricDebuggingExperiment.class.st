@@ -32,26 +32,6 @@ Therefore, use only filename-friendly characters.
 	^ 'ocdbg-experiment'
 ]
 
-{ #category : #'as yet unclassified' }
-ObjectCentricDebuggingExperiment >> gitOwner [
-
-	"Should return the owner of the git"
-
-	"The repository should be your fork"
-
-	^ self iceRepository origin owner
-]
-
-{ #category : #'as yet unclassified' }
-ObjectCentricDebuggingExperiment >> gitRepositoryName [
-
-	"Should return the name of the git repository, to create the url"
-
-	"The repository should be your fork"
-
-	^ self iceRepository origin projectName
-]
-
 { #category : #accessing }
 ObjectCentricDebuggingExperiment >> name [
 

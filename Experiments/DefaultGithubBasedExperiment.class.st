@@ -70,28 +70,10 @@ DefaultGithubBasedExperiment >> ensureUpstream [
 ]
 
 { #category : #'as yet unclassified' }
-DefaultGithubBasedExperiment >> gitOwner [
-
-	"Should return the owner of the git, to create the url"
-
-	"The repository should be your fork"
-
-	^ self subclassResponsibility
-]
-
-{ #category : #'as yet unclassified' }
-DefaultGithubBasedExperiment >> gitRepositoryName [
-
-	"Should return the name of the git repository, to create the url"
-
-	"The repository should be your fork"
-
-	^ self subclassResponsibility
-]
-
-{ #category : #'as yet unclassified' }
 DefaultGithubBasedExperiment >> iceRepository [
 
+	| projectName |
+	projectName := 'XPImageGeneration' "The project name of your fork of XPImageGeneration (in case of rename)".
 	^ IceRepository repositories detect: [ :d | 
 		  d location notNil and: [ 
 			  d origin projectName = 'XPImageGeneration' ] ]
