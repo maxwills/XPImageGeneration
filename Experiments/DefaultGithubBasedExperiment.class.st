@@ -107,6 +107,14 @@ DefaultGithubBasedExperiment >> materializeTasks [
 			'The task management system encountered a problem. Please inform the researcher managing the experiment' ]
 ]
 
+{ #category : #initialization }
+DefaultGithubBasedExperiment >> prepareSystemForExperiment [ 
+
+	"Override this to write your experiment tasks initialization"
+
+	
+]
+
 { #category : #'as yet unclassified' }
 DefaultGithubBasedExperiment >> relativeTasksDirectory [
 

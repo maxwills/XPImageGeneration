@@ -45,3 +45,12 @@ ExampleExperiment >> name [
 
 	^ 'Example Experiment'
 ]
+
+{ #category : #initialization }
+ExampleExperiment >> prepareSystemForExperiment [
+
+	EpMonitor disableDuring: [
+		 "Download baselines, compile code, add or remove classes here (in this block). With the EpMonitor disabled, changes
+		will not appear in the Epicea Code Changes viewer"
+		 ]
+]
