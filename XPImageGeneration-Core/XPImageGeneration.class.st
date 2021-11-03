@@ -27,9 +27,10 @@ XPImageGeneration class >> fixRichTextComposerErrors [
 { #category : #actions }
 XPImageGeneration class >> generateImage [
 
-	self loadBaselines.
-	self loadExperimentsPackage.
-	self install
+	EpMonitor disableDuring: [ 
+		self loadBaselines.
+		self loadExperimentsPackage.
+		self install ]
 ]
 
 { #category : #'as yet unclassified' }

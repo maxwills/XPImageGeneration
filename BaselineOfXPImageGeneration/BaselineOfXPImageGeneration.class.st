@@ -16,5 +16,11 @@ BaselineOfXPImageGeneration >> baseline: spec [
 { #category : #baselines }
 BaselineOfXPImageGeneration >> postload: loader package: packageSpec [
 
-	(self class environment at: #XPImageGeneration) generateImage
+	UIManager default
+		informUser: 'Generating experient image. Please wait...'
+		during: [ 
+		(self class environment at: #XPImageGeneration) generateImage ].
+	XPMessageBox
+		showDialog: 'Experiment image generation completed.'
+		withTitle: 'Finished'
 ]
