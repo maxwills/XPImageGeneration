@@ -23,11 +23,11 @@ Therefore, use only filename-friendly characters.
 { #category : #'as yet unclassified' }
 ExampleExperiment >> gitOwner [
 
-	"Should return the owner of the git, to create the url"
+	"Should return the owner of the git"
 
 	"The repository should be your fork"
 
-	^ 'Pharo-XP-Tools'
+	^ self iceRepository origin owner
 ]
 
 { #category : #'as yet unclassified' }
@@ -37,7 +37,7 @@ ExampleExperiment >> gitRepositoryName [
 
 	"The repository should be your fork"
 
-	^ 'XPImageGeneration'
+	^ self iceRepository origin projectName
 ]
 
 { #category : #accessing }

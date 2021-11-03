@@ -94,7 +94,7 @@ DefaultGithubBasedExperiment >> iceRepository [
 
 	^ IceRepository repositories detect: [ :d | 
 		  d location notNil and: [ 
-			  d origin projectName = self gitRepositoryName ] ]
+			  d origin projectName = 'XPImageGeneration' ] ]
 ]
 
 { #category : #'serialize/materialize' }
