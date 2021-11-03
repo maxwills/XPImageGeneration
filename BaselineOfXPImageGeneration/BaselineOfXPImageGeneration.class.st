@@ -10,8 +10,7 @@ BaselineOfXPImageGeneration >> baseline: spec [
 	<baseline>
 	spec for: #common do: [ 
 		spec postLoadDoIt: #postload:package:.
-		spec package: 'XPImageGeneration-Core'.
-		spec package: 'XPImageGeneration-UI' ]
+		spec package: 'XPImageGeneration' ]
 ]
 
 { #category : #baselines }
