@@ -1,13 +1,13 @@
 Class {
 	#name : #ObjectCentricDebuggingExperiment,
 	#superclass : #DefaultGithubBasedExperiment,
-	#category : #Experiments
+	#category : #'Experiments-OCDbg'
 }
 
 { #category : #accessing }
 ObjectCentricDebuggingExperiment >> description [
 
-	^ 'An example experience. Used to illustrate the usage of the framework'
+	^ 'Object-Centric Debugging Experiment'
 ]
 
 { #category : #'as yet unclassified' }
@@ -30,6 +30,12 @@ Therefore, use only filename-friendly characters.
 "
 
 	^ 'ocdbg-experiment'
+]
+
+{ #category : #accessing }
+ObjectCentricDebuggingExperiment >> logger [
+
+	^ logger ifNil: [ logger := ExperimentLoggerDSSpy new ]
 ]
 
 { #category : #accessing }
