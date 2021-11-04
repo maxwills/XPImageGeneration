@@ -10,7 +10,7 @@ Metacello new
 
 ## Quickly create an experiment
 
-- Create a for of this repository.
+- Create a fork of this repository.
 - Install the framework using the previous baseline, but pointing to you fork.
 - In Pharo, search for the class ExampleExperiment in the Experiments package. Copy it (right click, copy it, write the new name in the dialog).
 - Rewrite the instance methods of you new experiment class.
