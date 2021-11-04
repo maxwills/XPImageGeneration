@@ -11,15 +11,23 @@ ObjectCentricDebuggingExperiment >> description [
 ]
 
 { #category : #'as yet unclassified' }
+ObjectCentricDebuggingExperiment >> downloadAndInstallSpy [
+
+	Metacello new
+		baseline: 'DebuggingSpy';
+		repository: 'github://Pharo-XP-Tools/DebuggingSpy:master';
+		load
+]
+
+{ #category : #'as yet unclassified' }
 ObjectCentricDebuggingExperiment >> downloadAndInstallTasks [
 
 	Metacello new
 		baseline: 'OCDEvalTasks';
 		repository: 'github://Pharo-XP-Tools/OCDEval-Tasks:updated-task1';
 		load.
-	(self class environment at: #OCDTaskInstaller) installTasks.
-	(self class environment at: #OCDTaskInstaller)
-		removeTaskInstallerSilently
+	(self findClass: #OCDTaskInstaller) installTasks.
+	(self findClass: #OCDTaskInstaller) removeTaskInstallerSilently
 ]
 
 { #category : #accessing }
@@ -32,10 +40,17 @@ Therefore, use only filename-friendly characters.
 	^ 'ocdbg-experiment'
 ]
 
+{ #category : #'as yet unclassified' }
+ObjectCentricDebuggingExperiment >> findClass: aSymbol [
+
+	^ self class environment at: aSymbol
+]
+
 { #category : #accessing }
 ObjectCentricDebuggingExperiment >> logger [
 
-	^ logger ifNil: [ logger := ExperimentLoggerDSSpy new ]
+	^ logger ifNil: [ 
+		  logger := (self findClass: #ExperimentLoggerDSSpy) new ]
 ]
 
 { #category : #accessing }
@@ -48,6 +63,7 @@ ObjectCentricDebuggingExperiment >> name [
 ObjectCentricDebuggingExperiment >> prepareSystemForExperiment [
 
 	EpMonitor disableDuring: [ 
+		self downloadAndInstallSpy.
 		self downloadAndInstallTasks.
 		self class compile: 'downloadAndInstallTasks
 		^self' ]
