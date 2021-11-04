@@ -20,10 +20,10 @@ Therefore, use only filename-friendly characters.
 	^ 'example-experiment-id'
 ]
 
-{ #category : #initialization }
-ExampleExperiment >> initializeLogger [
+{ #category : #accessing }
+ExampleExperiment >> logger [
 
-	^ ExperimentLoggerNoLogs
+	^ logger ifNil: [ logger := ExperimentLoggerNoLogs new ]
 ]
 
 { #category : #accessing }
