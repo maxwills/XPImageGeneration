@@ -8,6 +8,66 @@ Class {
 }
 
 { #category : #building }
+ObjectCentricDebuggingExperiment class >> buildDemographicSurvey [
+
+	| survey |
+	survey := PhexSurvey new.
+	survey title: 'Demographic information'.
+
+	survey addQuestion: (self
+			 singleChoiceQuestion:
+			 'What is your highest achieved level of education?'
+			 options: #( 'Bachelor or equivalent' 'Master or equivalent'
+				    'PhD or higher academic title' 'None of the above' )).
+
+	survey addQuestion: (self
+			 singleChoiceQuestion:
+			 'What is you current job position? (CS = Computer Science)'
+			 options: #( 'Student' 'Software developer or engineer'
+				    'Researcher' 'CS Engineer but not in software'
+				    'Other CS position' 'Other (not CS)' )).
+
+	survey addQuestion: (self
+			 singleChoiceQuestion:
+			 'How many years of programming experience do you have?'
+			 options:
+			 #( '< 1' '1-2 years' '3-5 years' '6-10 years' 'More than 10' )).
+
+	survey addQuestion: (self
+			 singleChoiceQuestion:
+			 'How many years of programming experience do you have with Pharo?'
+			 options:
+			 #( '< 1' '1-2 years' '3-5 years' '6-10 years' 'More than 10' )).
+
+	survey addQuestion: (self
+			 singleChoiceQuestion: 'How often do you write code?'
+			 options: #( 'At least once per day' 'At least once per week'
+				    'At least once per month' 'At least once per year' )).
+
+	survey addQuestion: (self
+			 singleChoiceQuestion: 'How often do you write code in Pharo?'
+			 options: #( 'At least once per day' 'At least once per week'
+				    'At least once per month' 'At least once per year' )).
+
+
+	survey addQuestion: (self
+			 singleChoiceQuestion:
+			 'How much do you agree with the sentence: "I''m familiar with debugging"'
+			 options:
+				 #( 'Strongly Disagree' 'Disagree' 'Nor disagree or agree'
+				    'Agree' 'Strongly Agree' )).
+
+	survey addQuestion: (self
+			 singleChoiceQuestion:
+			 'How much do you agree with the sentence: "I''m familiar with Object-Centric Debugging"'
+			 options:
+				 #( 'Strongly Disagree' 'Disagree' 'Nor disagree or agree'
+				    'Agree' 'Strongly Agree' )).
+
+	^ survey
+]
+
+{ #category : #building }
 ObjectCentricDebuggingExperiment class >> buildIntroSurvey [
 	|textStream choices question survey |
 	textStream := WriteStream on: String new.
