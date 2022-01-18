@@ -20,6 +20,7 @@ Therefore, use only filename-friendly characters.
 	^ 'example-experiment-id'
 ]
 
+
 { #category : #accessing }
 ExampleExperiment >> logger [
 
