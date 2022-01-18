@@ -112,6 +112,126 @@ ObjectCentricDebuggingExperiment class >> buildIntroSurvey [
 ]
 
 { #category : #building }
+ObjectCentricDebuggingExperiment class >> buildPostExperimentSurvey [
+
+	| survey |
+	survey := PhexSurvey new.
+	survey title:
+		'Experiment Feedback (Perceived usefulness, Ease of Use, and qelf prediction of future use)'.
+
+	survey addQuestion: (self
+			 singleChoiceQuestion:
+			 '"The Task was easy." How much do you agree?'
+			 options:
+				 #( 'Strongly Disagree' 'Disagree' 'Nor disagree or agree'
+				    'Agree' 'Strongly Agree' )).
+
+	survey addQuestion: (self
+			 singleChoiceQuestion:
+			 '"The Task was long." How much do you agree?'
+			 options:
+				 #( 'Strongly Disagree' 'Disagree' 'Nor disagree or agree'
+				    'Agree' 'Strongly Agree' )).
+
+	survey addQuestion: (self
+			 singleChoiceQuestion:
+			 'How much do you agree with: "OCDbg would enable me to accomplish debugging tasks more quickly"'
+			 options:
+				 #( 'Strongly Disagree' 'Disagree' 'Nor disagree or agree'
+				    'Agree' 'Strongly Agree' )).
+
+	survey addQuestion: (self
+			 singleChoiceQuestion:
+			 'How much do you agree with: "OCDbg would improve my debugging performance"'
+			 options:
+				 #( 'Strongly Disagree' 'Disagree' 'Nor disagree or agree'
+				    'Agree' 'Strongly Agree' )).
+	survey addQuestion: (self
+			 singleChoiceQuestion:
+			 'How much do you agree with: "OCDbg would increase my productivity"'
+			 options:
+				 #( 'Strongly Disagree' 'Disagree' 'Nor disagree or agree'
+				    'Agree' 'Strongly Agree' )).
+	survey addQuestion: (self
+			 singleChoiceQuestion:
+			 'How much do you agree with: "OCDbg would increase my debugging effectiveness"'
+			 options:
+				 #( 'Strongly Disagree' 'Disagree' 'Nor disagree or agree'
+				    'Agree' 'Strongly Agree' )).
+	survey addQuestion: (self
+			 singleChoiceQuestion:
+			 'How much do you agree with: "OCDbg would make it easier to debug the code"'
+			 options:
+				 #( 'Strongly Disagree' 'Disagree' 'Nor disagree or agree'
+				    'Agree' 'Strongly Agree' )).
+
+	survey addQuestion: (self
+			 singleChoiceQuestion:
+			 'How much do you agree with: "I would find OCDbg useful"'
+			 options:
+				 #( 'Strongly Disagree' 'Disagree' 'Nor disagree or agree'
+				    'Agree' 'Strongly Agree' )).
+
+	survey addQuestion: (self
+			 singleChoiceQuestion:
+			 'How much do you agree with: "Learning to operate with OCDbg would be easy for me"'
+			 options:
+				 #( 'Strongly Disagree' 'Disagree' 'Nor disagree or agree'
+				    'Agree' 'Strongly Agree' )).
+
+	survey addQuestion: (self
+			 singleChoiceQuestion:
+			 'How much do you agree with: "I would find it easy to get OCDbg to do what I want it to do, to track objects manipulations and locate the bug"'
+			 options:
+				 #( 'Strongly Disagree' 'Disagree' 'Nor disagree or agree'
+				    'Agree' 'Strongly Agree' )).
+
+	survey addQuestion: (self
+			 singleChoiceQuestion:
+			 'How much do you agree with: "My interaction with OCDbg would be clear and understandable"'
+			 options:
+				 #( 'Strongly Disagree' 'Disagree' 'Nor disagree or agree'
+				    'Agree' 'Strongly Agree' )).
+
+	survey addQuestion: (self
+			 singleChoiceQuestion:
+			 'How much do you agree with: "It would be easy for me to become skillful at using OCDbg"'
+			 options:
+				 #( 'Strongly Disagree' 'Disagree' 'Nor disagree or agree'
+				    'Agree' 'Strongly Agree' )).
+
+	survey addQuestion: (self
+			 singleChoiceQuestion:
+			 'How much do you agree with: "It is easy to remember how to debug a code using OCDbg"'
+			 options:
+				 #( 'Strongly Disagree' 'Disagree' 'Nor disagree or agree'
+				    'Agree' 'Strongly Agree' )).
+
+	survey addQuestion: (self
+			 singleChoiceQuestion:
+			 'How much do you agree with: "I would find OCDbg easy to use"'
+			 options:
+				 #( 'Strongly Disagree' 'Disagree' 'Nor disagree or agree'
+				    'Agree' 'Strongly Agree' )).
+				
+	survey addQuestion: (self
+			 singleChoiceQuestion:
+			 'How much do you agree with: "Assuming OCDbg would be available, I predict that I will use it in the future"'
+			 options:
+				 #( 'Strongly Disagree' 'Disagree' 'Nor disagree or agree'
+				    'Agree' 'Strongly Agree' )).
+
+	survey addQuestion: (self
+			 singleChoiceQuestion:
+			 'How much do you agree with: " I would prefer OCDbg to the classic debugging system"'
+			 options:
+				 #( 'Strongly Disagree' 'Disagree' 'Nor disagree or agree'
+				    'Agree' 'Strongly Agree' )).
+
+	^ survey
+]
+
+{ #category : #building }
 ObjectCentricDebuggingExperiment class >> buildPostTaskSurvey [
 
 	| survey |
