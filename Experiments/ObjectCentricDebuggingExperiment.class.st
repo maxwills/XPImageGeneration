@@ -111,6 +111,85 @@ ObjectCentricDebuggingExperiment class >> buildIntroSurvey [
 	^ survey
 ]
 
+{ #category : #building }
+ObjectCentricDebuggingExperiment class >> buildPostTaskSurvey [
+
+	| survey |
+	survey := PhexSurvey new.
+	survey title: 'Demographic information'.
+
+
+	survey addQuestion: (self
+			 singleChoiceQuestion:
+			 '"The Task was easy." How much do you agree?'
+			 options:
+				 #( 'Strongly Disagree' 'Disagree' 'Nor disagree or agree'
+				    'Agree' 'Strongly Agree' )).
+
+	survey addQuestion: (self
+			 singleChoiceQuestion:
+			 '"The Task was long." How much do you agree?'
+			 options:
+				 #( 'Strongly Disagree' 'Disagree' 'Nor disagree or agree'
+				    'Agree' 'Strongly Agree' )).
+
+
+	survey addQuestion: (self
+			 singleChoiceQuestion: 'How long have you been interrupted?'
+			 options:
+				 #( 'Not interrupted' '1-2 minutes' 'up to 5 minutes'
+				    'up to 10 minutes' 'more than 10 minutes' )).
+
+	survey addQuestion: (self yesNoQuestion: 'Did you find the bug?').
+
+	survey addQuestion:
+		(self freeTextQuestion: 'If you found the bug, please describe it.').
+
+	survey addQuestion: (self
+			 singleChoiceQuestion:
+			 'If you found the bug, how much the debugger helped to discover the bug?'
+			 options:
+			 #( 'Not at all' 'Slightly' 'Moderately' 'Normally' 'Extremely' )).
+
+
+	survey addQuestion: (self
+			 singleChoiceQuestion:
+			 'If you found the bug, how much do you agree with: "The debugging method is enjoyable"'
+			 options:
+				 #( 'Strongly Disagree' 'Disagree' 'Nor disagree or agree'
+				    'Agree' 'Strongly Agree' )).
+
+	survey addQuestion: (self
+			 singleChoiceQuestion:
+			 'If you found the bug, how much do you agree with: "The debugging method is efficient"'
+			 options:
+				 #( 'Strongly Disagree' 'Disagree' 'Nor disagree or agree'
+				    'Agree' 'Strongly Agree' )).
+				
+	survey addQuestion: (self
+			 singleChoiceQuestion:
+			 'If you found the bug, how much do you agree with: "The debugging method is intuitive"'
+			 options:
+				 #( 'Strongly Disagree' 'Disagree' 'Nor disagree or agree'
+				    'Agree' 'Strongly Agree' )).
+				
+	survey addQuestion: (self
+			 singleChoiceQuestion:
+			 'If you found the bug, how much do you agree with: "The debugging method is easy to use"'
+			 options:
+				 #( 'Strongly Disagree' 'Disagree' 'Nor disagree or agree'
+				    'Agree' 'Strongly Agree' )).
+				
+	survey addQuestion: (self
+			 singleChoiceQuestion:
+			 'If you found the bug, how much do you agree with: "The debugging method is asy to learn"'
+			 options:
+				 #( 'Strongly Disagree' 'Disagree' 'Nor disagree or agree'
+				    'Agree' 'Strongly Agree' )).
+
+	^ survey
+]
+
 { #category : #initialization }
 ObjectCentricDebuggingExperiment class >> developmentMode [
 
@@ -121,6 +200,14 @@ ObjectCentricDebuggingExperiment class >> developmentMode [
 ObjectCentricDebuggingExperiment class >> developmentMode: anObject [
 
 	DevelopmentMode := anObject
+]
+
+{ #category : #building }
+ObjectCentricDebuggingExperiment class >> freeTextQuestion: text [
+
+	^ PhexFreeTextQuestion new
+		  title: text;
+		  yourself
 ]
 
 { #category : #initialization }
@@ -135,6 +222,14 @@ ObjectCentricDebuggingExperiment class >> singleChoiceQuestion: text options: ch
 	^ PhexSingleChoiceQuestion new
 		  title: text;
 		  choices: choices;
+		  yourself
+]
+
+{ #category : #building }
+ObjectCentricDebuggingExperiment class >> yesNoQuestion: text [
+
+	^ PhexYesNoQuestion new
+		  title: text;
 		  yourself
 ]
 
