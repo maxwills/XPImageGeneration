@@ -370,6 +370,40 @@ ObjectCentricDebuggingExperiment class >> singleChoiceQuestion: text options: ch
 ]
 
 { #category : #building }
+ObjectCentricDebuggingExperiment class >> task1Source [
+^'# Task 1
+
+A `MetaLink` is an object that annotates the Abstract Syntax Tree of a program. When the program executes, the annotated AST nodes trigger its metalinks which executes additional behavior.
+
+All-in-all, you can consider that an AST node corresponds to a particular expression in your source code. For example, if you install a metalink object on an instance variable of a class, the metalink will annotate all expressions referring to that instance variable in the source code of this class’ methods. The metalink object holds a set of AST nodes corresponding to these expressions, so that it knows where it is installed in the source code. 
+
+During the metalink installation process, each time a metalink object annotates an AST node (_i.e._, an expression in the source code), this AST node is added to the set of nodes held by the metalink object.
+
+## The problem
+In this task, we provide a test method  (`MetalinkStrangeNodeTest>>#testCollectionContents`, click on it) that installs a metalink object on an instance variable `instVar` of a class `ReflectivityExamples2`. 
+
+This instance variable is referenced in 4 expressions in the source code of the `ReflectivityExamples2` class. Therefore, the test expects that after installation, the metalink’s set will hold 4 AST nodes, one for each source code expression referring to instVar. 
+
+However, the test fails due to the metalink holding an incorrect number of nodes after installation: there is an extra node in the nodes set of the metalink. 
+
+We consider that the metalink installation process is correct: it is the test that is wrong.
+
+## Your task
+Your task is to understand why the test is not correctly testing the metalink installation process:.
+You have to: 
+* Understand the error in the test
+* Fix the error to make the test pass
+* Explain why the number of nodes is incorrect, i.e., the reason why there is an extra node (where in the source code, and why). 
+
+To help you, we stored the set of nodes held by the metalink in an instance variable in the test. This variable is named nodes
+
+This set is **the same as the one in the metalink object**: the AST nodes in this set are the nodes on which the metalink is installed.
+
+**Beware:** Sets are used everywhere in the system. Attempting to put a breakpoint in a method of the `Set` class might freeze your image.
+'
+]
+
+{ #category : #building }
 ObjectCentricDebuggingExperiment class >> task2Source [
 ^'# Task 2
 
