@@ -1,8 +1,29 @@
 Class {
 	#name : #ObjectCentricDebuggingExperiment,
 	#superclass : #DefaultGithubBasedExperiment,
+	#classVars : [
+		'DevelopmentMode'
+	],
 	#category : #'Experiments-OCDbg'
 }
+
+{ #category : #initialization }
+ObjectCentricDebuggingExperiment class >> developmentMode [
+
+	^ DevelopmentMode
+]
+
+{ #category : #initialization }
+ObjectCentricDebuggingExperiment class >> developmentMode: anObject [
+
+	DevelopmentMode := anObject
+]
+
+{ #category : #initialization }
+ObjectCentricDebuggingExperiment class >> initialize [
+
+	DevelopmentMode := false
+]
 
 { #category : #accessing }
 ObjectCentricDebuggingExperiment >> description [
@@ -22,12 +43,16 @@ ObjectCentricDebuggingExperiment >> downloadAndInstallSpy [
 { #category : #'as yet unclassified' }
 ObjectCentricDebuggingExperiment >> downloadAndInstallTasks [
 
+	"Install the code related to the tasks. (Not the tasks descriptions presented in Phex)"
+
 	Metacello new
 		baseline: 'OCDEvalTasks';
 		repository: 'github://Pharo-XP-Tools/OCDEval-Tasks:updated-task1';
 		load.
 	(self findClass: #OCDTaskInstaller) installTasks.
-	(self findClass: #OCDTaskInstaller) removeTaskInstallerSilently
+	"Note that this will remove code. If developing, manually set the experiment development flag to true (ObjectCentricDebuggingExperiment developmentMode: true"
+	ObjectCentricDebuggingExperiment developmentMode ifFalse: [ 
+		(self findClass: #OCDTaskInstaller) removeTaskInstallerSilently ]
 ]
 
 { #category : #accessing }
@@ -62,9 +87,16 @@ ObjectCentricDebuggingExperiment >> name [
 { #category : #initialization }
 ObjectCentricDebuggingExperiment >> prepareSystemForExperiment [
 
+	"Called when the experiment is selected and loaded in Phex. Do all experiment initialization logic here"
+
+	"Why not adding everything as a baseline dependincy instead of doing this?
+A: Control. Its difficult to selectively modify what happens between a baseline load and any of its dependencies. We do a manual installation instead, controlling the order, and other aspects such as changes logging."
+
 	EpMonitor disableDuring: [ 
 		self downloadAndInstallSpy.
 		self downloadAndInstallTasks.
-		self class compile: 'downloadAndInstallTasks
-		^self' ]
+		"remove the installation code (to cover tasks hints)"
+		ObjectCentricDebuggingExperiment developmentMode ifFalse: [ 
+			self class compile: 'downloadAndInstallTasks
+		^self' ] ]
 ]
