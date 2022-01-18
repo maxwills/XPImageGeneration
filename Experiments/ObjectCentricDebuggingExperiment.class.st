@@ -8,6 +8,30 @@ Class {
 }
 
 { #category : #building }
+ObjectCentricDebuggingExperiment class >> buildContactAndCommentSurvey [
+
+	| survey |
+	survey := PhexSurvey new.
+	survey title:
+		'Experiment Feedback (Perceived usefulness, Ease of Use, and self prediction of future use)'.
+
+	survey addQuestion: (self freeTextQuestion:
+			 'If you have any comments on the experiment, please add them here').
+
+	survey addQuestion: (self freeTextQuestion:
+			 'If you would be informed about results of this work, please add your e-mail').
+
+	survey addQuestion: (self freeTextQuestion:
+			 'If you would participate to a more detailed interview, please add your e-mail').
+
+	survey addQuestion:
+		(self yesNoQuestion:
+			 'Do you authorize the publication of these data?').
+
+	^ survey
+]
+
+{ #category : #building }
 ObjectCentricDebuggingExperiment class >> buildDemographicSurvey [
 
 	| survey |
