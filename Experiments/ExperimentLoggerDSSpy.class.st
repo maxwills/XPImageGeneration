@@ -11,13 +11,13 @@ ExperimentLoggerDSSpy >> dsSpyClass [
 	
 	"Can be probalby properly fixed by adding DSSpy as a dependency of the baseline"
 
-	^ self class environment at: #DDSpy
+	^ self class environment at: #DSSpy
 ]
 
 { #category : #'as yet unclassified' }
 ExperimentLoggerDSSpy >> dsSpyInstrumenterClass [
 
-	^ self class environment at: #DDSpyInstrumenter
+	^ self class environment at: #DSSpyInstrumenter
 ]
 
 { #category : #'as yet unclassified' }
@@ -38,7 +38,7 @@ ExperimentLoggerDSSpy >> experimentLoaded: anExperiment [
 	dsSpyClass := self dsSpyClass.
 	dsSpyInstrumentationClass := self dsSpyInstrumenterClass.
 	dsSpyClass logOnlyWhenTaskStarted: true.
-	dsSpyInstrumentationClass DSSpyInstrumenter instrumentSystem
+	dsSpyInstrumentationClass instrumentSystem
 ]
 
 { #category : #'as yet unclassified' }
