@@ -1,6 +1,9 @@
 Class {
 	#name : #ObjectCentricDebuggingExperiment,
 	#superclass : #DefaultGithubBasedExperiment,
+	#classVars : [
+		'DevelopmentMode'
+	],
 	#category : #'Experiments-OCDbg'
 }
 
