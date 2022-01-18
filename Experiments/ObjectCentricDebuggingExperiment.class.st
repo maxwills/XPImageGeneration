@@ -334,6 +334,40 @@ ObjectCentricDebuggingExperiment class >> buildPostTaskSurvey [
 	^ survey
 ]
 
+{ #category : #building }
+ObjectCentricDebuggingExperiment class >> buildTasks [
+
+	|tasks task|
+	self flag: 'This construction of tasks is incorrect: depending on the experimental setup, some participants will have a reverse order of tasks, and the tool will not be available always on the same task (therefore the tutorial and warmup (not present yet) order will change too.'.
+	tasks := OrderedCollection new.
+	
+	task := PhexTask new.
+	task name: 'Task 1'.
+	task survey: self buildPostTaskSurvey.
+	task requiredAnswer: 'You must provide an answer'.
+	task requiresAnswer: true.
+	task description: self task1Source.
+	tasks add: task.
+	
+	task := PhexTask new.
+	task name: 'Tutorial'.
+	task survey: self buildPostTaskSurvey.
+	task requiredAnswer: 'You have no answer to provide'.
+	task requiresAnswer: false.
+	task description: self tutorialTaskSource.
+	tasks add: task.
+	
+	task := PhexTask new.
+	task name: 'Task 2'.
+	task survey: self buildPostTaskSurvey.
+	task requiredAnswer: 'You must provide an answer'.
+	task requiresAnswer: true.
+	task description: self task2Source.
+	tasks add: task.
+	
+	^tasks
+]
+
 { #category : #initialization }
 ObjectCentricDebuggingExperiment class >> developmentMode [
 
@@ -564,6 +598,18 @@ Therefore, use only filename-friendly characters.
 ObjectCentricDebuggingExperiment >> findClass: aSymbol [
 
 	^ self class environment at: aSymbol
+]
+
+{ #category : #initialization }
+ObjectCentricDebuggingExperiment >> initialize [
+	super initialize.
+	self flag: 'This initialization code should be done only in dev mode and serialized for the experiment.'.
+	self addPreSurvey: self class buildIntroSurvey.
+	self addPostSurvey: self class buildDemographicSurvey.
+	self addPostSurvey: self class buildPostExperimentSurvey.
+	self addPostSurvey: self class buildContactAndCommentSurvey.
+	tasks := self class buildTasks
+	
 ]
 
 { #category : #accessing }
