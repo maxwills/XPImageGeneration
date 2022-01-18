@@ -4,7 +4,10 @@ Defines a base behavior for any experiment that inherits from this class.
 Class {
 	#name : #DefaultGithubBasedExperiment,
 	#superclass : #PhexExperiment,
-	#category : #Experiments
+	#instVars : [
+		'logger'
+	],
+	#category : #'Experiments-Base'
 }
 
 { #category : #adding }
@@ -79,6 +82,12 @@ DefaultGithubBasedExperiment >> iceRepository [
 			  d origin projectName = 'XPImageGeneration' ] ]
 ]
 
+{ #category : #initialization }
+DefaultGithubBasedExperiment >> logger [
+
+	^ logger ifNil: [ logger := ExperimentLoggerNoLogs new ]
+]
+
 { #category : #'serialize/materialize' }
 DefaultGithubBasedExperiment >> materializeTasks [
 
@@ -90,9 +99,11 @@ DefaultGithubBasedExperiment >> materializeTasks [
 ]
 
 { #category : #initialization }
-DefaultGithubBasedExperiment >> prepareSystemForExperiment [ 
+DefaultGithubBasedExperiment >> prepareSystemForExperiment [
 
 	"Override this to write your experiment tasks initialization"
+
+	"Called when the experiment is selected and loaded in Phex. Do all experiment initialization logic here"
 
 	
 ]
@@ -112,4 +123,14 @@ DefaultGithubBasedExperiment >> sequentialTasks [
 DefaultGithubBasedExperiment >> tasksDirectory [
 
 	^ self iceRepository location / 'tasksDefinition' / self experienceId
+]
+
+{ #category : #initialization }
+DefaultGithubBasedExperiment >> tasksMaterializationFilter [
+
+	"returns a filter that is applied when materializing tasks"
+
+	"Override/change this this to make each user have a different set of tasks"
+
+	^ [ :task | true "no filter" ]
 ]

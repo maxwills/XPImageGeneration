@@ -1,7 +1,7 @@
 Class {
 	#name : #ExampleExperiment,
 	#superclass : #DefaultGithubBasedExperiment,
-	#category : #Experiments
+	#category : #'Experiments-Base'
 }
 
 { #category : #accessing }
@@ -21,6 +21,12 @@ Therefore, use only filename-friendly characters.
 ]
 
 { #category : #accessing }
+ExampleExperiment >> logger [
+
+	^ logger ifNil: [ logger := ExperimentLoggerNoLogs new ]
+]
+
+{ #category : #accessing }
 ExampleExperiment >> name [
 
 	^ 'Example Experiment'
@@ -33,4 +39,14 @@ ExampleExperiment >> prepareSystemForExperiment [
 		 "Download baselines, compile code, add or remove classes here (in this block). With the EpMonitor disabled, changes
 		will not appear in the Epicea Code Changes viewer"
 		 ]
+]
+
+{ #category : #initialization }
+ExampleExperiment >> tasksMaterializationFilter [
+
+	"returns a filter that is applied when materializing tasks"
+
+	"Override this to make each user have a different set of tasks"
+
+	^ [ :task | task "no filter" ]
 ]
