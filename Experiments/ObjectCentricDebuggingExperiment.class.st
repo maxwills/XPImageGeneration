@@ -117,7 +117,7 @@ ObjectCentricDebuggingExperiment class >> buildPostExperimentSurvey [
 	| survey |
 	survey := PhexSurvey new.
 	survey title:
-		'Experiment Feedback (Perceived usefulness, Ease of Use, and qelf prediction of future use)'.
+		'Experiment Feedback (Perceived usefulness, Ease of Use, and self prediction of future use)'.
 
 	survey addQuestion: (self
 			 singleChoiceQuestion:
