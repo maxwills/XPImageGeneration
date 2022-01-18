@@ -1,7 +1,7 @@
 Class {
 	#name : #ExampleExperiment,
 	#superclass : #DefaultGithubBasedExperiment,
-	#category : #Experiments
+	#category : #'Experiments-Base'
 }
 
 { #category : #accessing }
@@ -18,6 +18,13 @@ Therefore, use only filename-friendly characters.
 "
 
 	^ 'example-experiment-id'
+]
+
+
+{ #category : #accessing }
+ExampleExperiment >> logger [
+
+	^ logger ifNil: [ logger := ExperimentLoggerNoLogs new ]
 ]
 
 { #category : #accessing }

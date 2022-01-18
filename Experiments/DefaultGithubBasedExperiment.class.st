@@ -4,7 +4,10 @@ Defines a base behavior for any experiment that inherits from this class.
 Class {
 	#name : #DefaultGithubBasedExperiment,
 	#superclass : #PhexExperiment,
-	#category : #Experiments
+	#instVars : [
+		'logger'
+	],
+	#category : #'Experiments-Base'
 }
 
 { #category : #adding }
@@ -77,6 +80,12 @@ DefaultGithubBasedExperiment >> iceRepository [
 	^ IceRepository repositories detect: [ :d | 
 		  d location notNil and: [ 
 			  d origin projectName = 'XPImageGeneration' ] ]
+]
+
+{ #category : #initialization }
+DefaultGithubBasedExperiment >> logger [
+
+	^ logger ifNil: [ logger := ExperimentLoggerNoLogs new ]
 ]
 
 { #category : #'serialize/materialize' }
