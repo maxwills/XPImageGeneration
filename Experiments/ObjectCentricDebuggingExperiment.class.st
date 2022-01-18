@@ -404,6 +404,7 @@ The first step of object-centric debugging is to obtain this box object.
 To do that, we first have to interrupt our execution and find the object in the debugger:
 * Go to `OCDBoxTest>>#testMultipleBoxes` (click on it)
 * Add a `self halt.` instruction just after the first `100 timesRepeat` loop
+* Execute the test: the debugger opens on your halt
 * Select the `Boxes` variable into the bottom inspector
 * Select the object at index 10: you got the object to debug!
 
@@ -423,22 +424,17 @@ The typical use-case for this object-centric breakpoint is when you have many in
 
 ### Exercise 2
 
-In this exercise, we reuse our test iterating over a hundred box objects. We select again a box among all the iterated boxes, but this time we want to stop when the name instance variable of that box is written to. To that end, we install an object-centric breakpoint on all write accesses to that variable in the selected object. Then, we proceed the test and the execution only breaks when the name instance variable of the selected box is modified.
-Breaking when the name instance variable of our box object is written
+In this exercise, we reuse our test iterating over a hundred box objects. We select again a box among all the iterated boxes, but this time we want to stop when the `name` instance variable of that box is written to. To that end, we install an object-centric breakpoint on all write accesses to that variable in the selected object. Then, we proceed the test and the execution only breaks when the name instance variable of the selected box is modified.
 
-As before, we execute the test and a debugger opens before the boxes are iterated in a loop. In this loop, each box is being printed one by one through the crTrace method.
+**Step 1: getting to the object to debug**
+Perform again the instructions from **Step 1** of **Exercise 1**.
 
-We select one of the boxes in the boxes collection:
+**Step 1: getting to the object to debug**
+In the raw pane of the inspector opened on your box object, select the name instance variable. Right-click on that method, and select halt on write in the menu:
 
-    Double-click on the boxes variable in the bottom inspector,
-    choose a box in the items pane by double-clicking on the box.
+The breakpoint is installed on all write accesses to this variable, and scoped to our box object, you can see the write accesses and the breakpoint installed on them in the breakpoint pane.
 
-In the opening inspector, go into the raw view and select the name instance variable. Right-click on that method, and select halt on write in the menu:
-
-    The breakpoint is installed on all write accesses to this variable, and scoped to our box object,
-    you can see the write accesses and the breakpoint installed on them in the breakpoint pane.
-
-We proceed the execution and it breaks when the name variable of the selected box is modified. There is no halt when other boxes have their name variable modified.
+Proceed the execution: it breaks each time the name variable of the selected box is modified. There is no habreakpoint when other boxes have their name variable modified.
 '
 ]
 
