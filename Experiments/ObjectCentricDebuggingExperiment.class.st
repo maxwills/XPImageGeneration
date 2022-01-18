@@ -430,11 +430,13 @@ In this exercise, we reuse our test iterating over a hundred box objects. We sel
 Perform again the instructions from **Step 1** of **Exercise 1**.
 
 **Step 1: getting to the object to debug**
-In the raw pane of the inspector opened on your box object, select the name instance variable. Right-click on that method, and select halt on write in the menu:
+In the raw pane of the inspector opened on your box object:
+* Select the name instance variable in the table
+* Right-click on that  item, and select `halt on write` in the menu
+* Proceed the execution in the debugger
 
-The breakpoint is installed on all write accesses to this variable, and scoped to our box object, you can see the write accesses and the breakpoint installed on them in the breakpoint pane.
-
-Proceed the execution: it breaks each time the name variable of the selected box is modified. There is no habreakpoint when other boxes have their name variable modified.
+The test continues and  iterates over the hundred boxes.
+The execution breaks only when the box object we instrumented writes into its `name` instance variable. All other objects are not affected by the breakpoint.
 '
 ]
 
