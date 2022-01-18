@@ -346,7 +346,7 @@ ObjectCentricDebuggingExperiment class >> developmentMode: anObject [
 	DevelopmentMode := anObject
 ]
 
-{ #category : #building }
+{ #category : #'building - API' }
 ObjectCentricDebuggingExperiment class >> freeTextQuestion: text [
 
 	^ PhexFreeTextQuestion new
@@ -360,7 +360,7 @@ ObjectCentricDebuggingExperiment class >> initialize [
 	DevelopmentMode := false
 ]
 
-{ #category : #building }
+{ #category : #'building - API' }
 ObjectCentricDebuggingExperiment class >> singleChoiceQuestion: text options: choices [
 
 	^ PhexSingleChoiceQuestion new
@@ -369,7 +369,7 @@ ObjectCentricDebuggingExperiment class >> singleChoiceQuestion: text options: ch
 		  yourself
 ]
 
-{ #category : #building }
+{ #category : #'building - sources' }
 ObjectCentricDebuggingExperiment class >> task1Source [
 ^'# Task 1
 
@@ -403,7 +403,7 @@ This set is **the same as the one in the metalink object**: the AST nodes in thi
 '
 ]
 
-{ #category : #building }
+{ #category : #'building - sources' }
 ObjectCentricDebuggingExperiment class >> task2Source [
 ^'# Task 2
 
@@ -441,7 +441,7 @@ To help you, you can inspect any atom by performing a right-click on it. This ac
 '
 ]
 
-{ #category : #building }
+{ #category : #'building - sources' }
 ObjectCentricDebuggingExperiment class >> tutorialTaskSource [
 ^'
 # Tutorial
@@ -512,7 +512,7 @@ The execution breaks only when the box object we instrumented writes into its `n
 '
 ]
 
-{ #category : #building }
+{ #category : #'building - API' }
 ObjectCentricDebuggingExperiment class >> yesNoQuestion: text [
 
 	^ PhexYesNoQuestion new
