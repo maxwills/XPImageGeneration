@@ -370,6 +370,79 @@ ObjectCentricDebuggingExperiment class >> singleChoiceQuestion: text options: ch
 ]
 
 { #category : #building }
+ObjectCentricDebuggingExperiment class >> tutorialTaskSource [
+^'
+# Tutorial
+## Context: the OCDBox objects loop
+In this example, we will use a class named `OCDBox`. It models a trivial object named box that holds objects. It has two instance variables, elements and name, and a few methods in its API. In particular, the method `OCDBox>>#addElement:`  (click on it) adds an object into the box.
+
+We will use a test to practice object-centric breakpoints. In this test, we instantiate 100 boxes. We iterate over all these boxes to:
+
+* add an object to each box,
+ *  print the box on the Transcript.
+
+Open the transcript (Browse > Transcript) then execute this test: `OCDBoxTest>>#testMultipleBoxes`.
+The transcript shows you each box that is printed in the iteration loop. 
+If you look at the code of the OCDBox class, you will see that:
+
+* adding an element (`OCDBox>>#addElement:` )  to a box modifies its name,
+ *  the printing method (`OCDBox>>#printString` ) uses the name to display the box in the Transcript.
+
+## Tutorial: Breaking when an object receives a message 
+
+### Use-cases
+
+The typical use-case for this object-centric breakpoint is when you have many instances of the same class running in your program, while you are interested to debug a method for one specific object among these instances. You are interested to answer the following question: _When is this particular object executing this particular method during the execution?_ 
+
+### Exercise 1
+
+The `OCDBoxTest>>#testMultipleBoxes` test iterates over a hundred boxes objects, and to each object it sends the  `#addElement:` message. In this exercise, we select one box object among all the iterated boxes, and we install an object-centric breakpoint on the `OCDBox>>#addElement:` method of that object. Then, we proceed the test and the  the  `#addElement:` message is sent to each of the boxes. The execution only stops when the selected box executes the `OCDBox>>#addElement:` method.
+
+**Step 1: getting to the object to debug**
+Let us say that we want to debug the tenth box in the box collection.
+The first step of object-centric debugging is to obtain this box object.
+To do that, we first have to interrupt our execution and find the object in the debugger:
+* Go to `OCDBoxTest>>#testMultipleBoxes` (click on it)
+* Add a `self halt.` instruction just after the first `100 timesRepeat` loop
+* Select the `Boxes` variable into the bottom inspector
+* Select the object at index 10: you got the object to debug!
+
+**Step 2: installing an object-centric breakpoint on our object**
+In the meta inspection pane of the object you just selected, find the method  `OCDBox>>#addElement:`.
+* Right-click on that method, and select _halt on call_ in the menu
+* Proceed the execution in the debugger
+
+The test continues and  iterates over the hundred boxes, and sends the addElement: message to each box object.
+Only the box number 10 that you instrumented breaks when executing this method!
+
+## Tutorial: Breaking when the state of a specific object is touched
+
+### Use-cases
+
+The typical use-case for this object-centric breakpoint is when you have many instances of the same class running in your program, while you are interested to know when the state of one specific object is modified. You are interested to answer the following question: _When is the state of this particular object modified during the execution?_
+
+### Exercise 2
+
+In this exercise, we reuse our test iterating over a hundred box objects. We select again a box among all the iterated boxes, but this time we want to stop when the name instance variable of that box is written to. To that end, we install an object-centric breakpoint on all write accesses to that variable in the selected object. Then, we proceed the test and the execution only breaks when the name instance variable of the selected box is modified.
+Breaking when the name instance variable of our box object is written
+
+As before, we execute the test and a debugger opens before the boxes are iterated in a loop. In this loop, each box is being printed one by one through the crTrace method.
+
+We select one of the boxes in the boxes collection:
+
+    Double-click on the boxes variable in the bottom inspector,
+    choose a box in the items pane by double-clicking on the box.
+
+In the opening inspector, go into the raw view and select the name instance variable. Right-click on that method, and select halt on write in the menu:
+
+    The breakpoint is installed on all write accesses to this variable, and scoped to our box object,
+    you can see the write accesses and the breakpoint installed on them in the breakpoint pane.
+
+We proceed the execution and it breaks when the name variable of the selected box is modified. There is no halt when other boxes have their name variable modified.
+'
+]
+
+{ #category : #building }
 ObjectCentricDebuggingExperiment class >> yesNoQuestion: text [
 
 	^ PhexYesNoQuestion new
