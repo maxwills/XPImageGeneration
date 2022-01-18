@@ -31,7 +31,7 @@ ObjectCentricDebuggingExperiment >> description [
 	^ 'Object-Centric Debugging Experiment'
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #installation }
 ObjectCentricDebuggingExperiment >> downloadAndInstallSpy [
 
 	Metacello new
@@ -40,7 +40,7 @@ ObjectCentricDebuggingExperiment >> downloadAndInstallSpy [
 		load
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #installation }
 ObjectCentricDebuggingExperiment >> downloadAndInstallTasks [
 
 	"Install the code related to the tasks. (Not the tasks descriptions presented in Phex)"
@@ -65,7 +65,7 @@ Therefore, use only filename-friendly characters.
 	^ 'ocdbg-experiment'
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #installation }
 ObjectCentricDebuggingExperiment >> findClass: aSymbol [
 
 	^ self class environment at: aSymbol
