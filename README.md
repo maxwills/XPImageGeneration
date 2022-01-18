@@ -4,7 +4,7 @@ THIS BRANCH CONTAINS THE DEFINTION OF THE OBJECT CENTRIC DEBUGGER EXPERIMENT.
   
 ## Participants:
 
-Execute the baseline above.
+Execute the baseline below.
 
 ```Smalltalk
 Metacello new
