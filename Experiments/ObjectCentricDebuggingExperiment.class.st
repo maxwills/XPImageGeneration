@@ -370,6 +370,44 @@ ObjectCentricDebuggingExperiment class >> singleChoiceQuestion: text options: ch
 ]
 
 { #category : #building }
+ObjectCentricDebuggingExperiment class >> task2Source [
+^'# Task 2
+
+## The problem
+AtomApp is a small graphical application that can be launched via `AtomApp class >> #run` (click on it).
+
+* Run the application by executing this method (clic on the play button near the method name).
+
+You should see the following application:
+
+![AtomApp](https://raw.githubusercontent.com/Pharo-XP-Tools/XPImageGeneration/exp-ocd/tasksDefinition/ocdbg-experiment/atoms.png)
+
+The app is composed of colored squares named atoms. 
+Each time the mouse moves over a square, the color of the square changes.
+
+* Move your mouse over the squares, and see the behavior.
+
+The atoms squares are instances of a class `AtomMorph`.  
+In this class, we redefined the method `AtomMorph>>#handleMouseMove:` so that each time the mouse moves over an atom, we request a color change for that atom.
+
+The color of an atom is changed by modifying it’s instance variable `color` and putting a new color object in that variable. This instance variable is modified, in particular, when sending the `Morph>>#color:` message to atoms objects. 
+
+However, as you will notice in the provided application and in the animated image above, one of the atoms never changes color when the mouse moves over it. Actually, most atoms do change their color, but it seems that green atoms do not. 
+* Move your mouse over non-green  squares and over green squares.  Repeat it many times and observe the behavior.
+
+**This is a bug:** all atoms should change color when you move the mouse above them.
+
+## Your task
+* Understand why some green squares do not have the same behavior as other squares
+* Fix the bug, that is, if all atoms change color when moving the mouse over them, then you’ve fixed the bug.
+
+To help you, you can inspect any atom by performing a right-click on it. This action will open an inspector on that atom.
+
+**Beware:** this is a graphical application, and putting breakpoints in the display system (e.g., in the Morph class) might freeze your system.
+'
+]
+
+{ #category : #building }
 ObjectCentricDebuggingExperiment class >> tutorialTaskSource [
 ^'
 # Tutorial
