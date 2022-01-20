@@ -1,28 +1,24 @@
+"
+Logging entry point for PhexExperiments 
+"
 Class {
 	#name : #ExperimentLogging,
 	#superclass : #Object,
-	#classVars : [
-		'currentLogger'
-	],
 	#category : #'XPImageGeneration-Logging'
 }
 
-{ #category : #'as yet unclassified' }
-ExperimentLogging class >> currentLogger [
-
-	^ currentLogger
-]
-
-{ #category : #'as yet unclassified' }
+{ #category : #logger }
 ExperimentLogging class >> setLoggerFor: anExperiment [
 
 	"Sets the logger object for the experiment, and the  action handlers"
 
-	currentLogger := anExperiment logger.
-	anExperiment startingTaskAction: [ :xp :task | 
-		currentLogger taskStarted: task ].
-	anExperiment finishTaskAction: [ :xp :task | 
-		currentLogger taskFinished: task.
+	| logger |
+	logger := anExperiment logger.
+	anExperiment whenTaskStartedDo: [ :xp :task | 
+		logger taskStarted: task ].
+	anExperiment whenTaskFinishedDo: [ :xp :task | 
+		logger taskFinished: task.
 		anExperiment isFinished ifTrue: [ 
-			currentLogger experimentFinished: anExperiment ] ]
+			self flag: 'Does that work?'.
+			logger experimentFinished: anExperiment ] ]
 ]

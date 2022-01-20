@@ -1,10 +1,13 @@
+"
+I am a logger that uses the DSSpy framework to log elements from PhexExperiments.
+"
 Class {
 	#name : #ExperimentLoggerDSSpy,
 	#superclass : #AbstractExperimentLogger,
 	#category : #'Experiments-OCDbg'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : #logging }
 ExperimentLoggerDSSpy >> dsSpyClass [
 
 	"Why like this? DDSpy is installed whe the experiment starts. When developing the experiment (without starting the experiment), the class is not loaded. This prevent some warnings."
@@ -14,13 +17,13 @@ ExperimentLoggerDSSpy >> dsSpyClass [
 	^ self class environment at: #DSSpy
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #logging }
 ExperimentLoggerDSSpy >> dsSpyInstrumenterClass [
 
 	^ self class environment at: #DSSpyInstrumenter
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #logging }
 ExperimentLoggerDSSpy >> experimentFinished: anExperiment [
 
 	"Called by the framework when all the tasks of an Experiment hhave been answered"
@@ -29,7 +32,7 @@ ExperimentLoggerDSSpy >> experimentFinished: anExperiment [
 		  'The experiment: ' , anExperiment name , 'has been finished.'
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #logging }
 ExperimentLoggerDSSpy >> experimentLoaded: anExperiment [
 
 	"Called by the framework when an Experiment has been loaded (After systemPreparation phase and also after materializing the tasks from ptx files"
@@ -41,7 +44,17 @@ ExperimentLoggerDSSpy >> experimentLoaded: anExperiment [
 	dsSpyInstrumentationClass instrumentSystem
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #logging }
+ExperimentLoggerDSSpy >> surveyClosed: aSurvey [
+
+	"Called by the framework when a task was finished(answer was submitted) by the user. "
+
+	| dsSpyClass |
+	dsSpyClass := self dsSpyClass.
+	dsSpyClass closeSurvey: aSurvey
+]
+
+{ #category : #logging }
 ExperimentLoggerDSSpy >> taskFinished: aTask [
 
 	"Called by the framework when a task was finished(answer was submitted) by the user. "
@@ -51,7 +64,7 @@ ExperimentLoggerDSSpy >> taskFinished: aTask [
 	dsSpyClass endTask: aTask
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #logging }
 ExperimentLoggerDSSpy >> taskStarted: aTask [
 
 	"Called by the framework when a task was started by the user. "
