@@ -64,7 +64,7 @@ DefaultGithubBasedExperiment >> ensureTasksDefinitionFolder [
 	^ dir
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #'serialize/materialize' }
 DefaultGithubBasedExperiment >> ensureUpstream [
 
 	| remote |
@@ -72,7 +72,7 @@ DefaultGithubBasedExperiment >> ensureUpstream [
 	self iceRepository branch setUpstreamIfMissing: remote
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #'serialize/materialize' }
 DefaultGithubBasedExperiment >> iceRepository [
 
 	| projectName |
@@ -108,7 +108,7 @@ DefaultGithubBasedExperiment >> prepareSystemForExperiment [
 	
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #'serialize/materialize' }
 DefaultGithubBasedExperiment >> relativeTasksDirectory [
 
 	^ RelativePath new / 'tasksDefinition' / self experienceId
@@ -119,7 +119,7 @@ DefaultGithubBasedExperiment >> sequentialTasks [
 	^true
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #'serialize/materialize' }
 DefaultGithubBasedExperiment >> tasksDirectory [
 
 	^ self iceRepository location / 'tasksDefinition' / self experienceId

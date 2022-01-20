@@ -11,7 +11,7 @@ Class {
 ObjectCentricDebuggingExperiment class >> buildContactAndCommentSurvey [
 
 	| survey |
-	survey := PhexSurvey new.
+	survey := PhexSurvey postExperimentSurvey.
 	survey title:
 		'Experiment Feedback (Perceived usefulness, Ease of Use, and self prediction of future use)'.
 
@@ -35,7 +35,7 @@ ObjectCentricDebuggingExperiment class >> buildContactAndCommentSurvey [
 ObjectCentricDebuggingExperiment class >> buildDemographicSurvey [
 
 	| survey |
-	survey := PhexSurvey new.
+	survey := PhexSurvey postExperimentSurvey.
 	survey title: 'Demographic information'.
 
 	survey addQuestion: (self
@@ -92,6 +92,47 @@ ObjectCentricDebuggingExperiment class >> buildDemographicSurvey [
 ]
 
 { #category : #building }
+ObjectCentricDebuggingExperiment class >> buildExperiment [
+
+	| tasks postTaskSurvey surveys xp |
+	tasks := self buildTasks.
+	surveys := self buildExperimentSurveys.
+
+	postTaskSurvey := self buildPostTaskSurvey.
+	surveys add: postTaskSurvey.
+	tasks first survey: postTaskSurvey uuid.
+
+	postTaskSurvey := self buildPostTaskSurvey.
+	surveys add: postTaskSurvey.
+	tasks last survey: postTaskSurvey uuid.
+
+	10 atRandom < 6 ifTrue: [ 
+		| firstTask lastTask |
+		firstTask := tasks removeFirst.
+		lastTask := tasks removeLast.
+		tasks addFirst: lastTask.
+		tasks addLast: firstTask ].
+	
+	xp := self basicNew.
+	xp tasks: tasks.
+	surveys do:[:s| xp addSurvey: s].
+	xp serializeTasks.
+	xp serializeSurveys
+]
+
+{ #category : #building }
+ObjectCentricDebuggingExperiment class >> buildExperimentSurveys [
+
+	| svs |
+	svs := OrderedCollection new.
+	svs addAll: self buildIntroSurvey.
+	svs addAll: self buildDemographicSurvey.
+	svs addAll: self buildPostExperimentSurvey.
+	svs addAll: self buildContactAndCommentSurvey.
+	^svs
+]
+
+{ #category : #building }
 ObjectCentricDebuggingExperiment class >> buildIntroSurvey [
 	|textStream choices question survey |
 	textStream := WriteStream on: String new.
@@ -129,7 +170,7 @@ ObjectCentricDebuggingExperiment class >> buildIntroSurvey [
 	
 	choices := #('yes' 'no').
 	question := self singleChoiceQuestion: textStream contents options: choices.
-	survey := PhexSurvey new.
+	survey := PhexSurvey preExperimentSurvey.
 	survey title: 'Experiment introduction and data policy.'.
 	survey questions: { question }.
 	^ survey
@@ -139,7 +180,7 @@ ObjectCentricDebuggingExperiment class >> buildIntroSurvey [
 ObjectCentricDebuggingExperiment class >> buildPostExperimentSurvey [
 
 	| survey |
-	survey := PhexSurvey new.
+	survey := PhexSurvey postExperimentSurvey.
 	survey title:
 		'Experiment Feedback (Perceived usefulness, Ease of Use, and self prediction of future use)'.
 
@@ -338,12 +379,10 @@ ObjectCentricDebuggingExperiment class >> buildPostTaskSurvey [
 ObjectCentricDebuggingExperiment class >> buildTasks [
 
 	|tasks task|
-	self flag: 'This construction of tasks is incorrect: depending on the experimental setup, some participants will have a reverse order of tasks, and the tool will not be available always on the same task (therefore the tutorial and warmup (not present yet) order will change too.'.
 	tasks := OrderedCollection new.
 	
 	task := PhexTask new.
 	task name: 'Task 1'.
-	task survey: self buildPostTaskSurvey.
 	task requiredAnswer: 'You must provide an answer'.
 	task requiresAnswer: true.
 	task description: self task1Source.
@@ -351,7 +390,6 @@ ObjectCentricDebuggingExperiment class >> buildTasks [
 	
 	task := PhexTask new.
 	task name: 'Tutorial'.
-	task survey: self buildPostTaskSurvey.
 	task requiredAnswer: 'You have no answer to provide'.
 	task requiresAnswer: false.
 	task description: self tutorialTaskSource.
@@ -359,7 +397,6 @@ ObjectCentricDebuggingExperiment class >> buildTasks [
 	
 	task := PhexTask new.
 	task name: 'Task 2'.
-	task survey: self buildPostTaskSurvey.
 	task requiredAnswer: 'You must provide an answer'.
 	task requiresAnswer: true.
 	task description: self task2Source.
