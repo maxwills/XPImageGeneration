@@ -637,18 +637,6 @@ ObjectCentricDebuggingExperiment >> findClass: aSymbol [
 	^ self class environment at: aSymbol
 ]
 
-{ #category : #initialization }
-ObjectCentricDebuggingExperiment >> initialize [
-	super initialize.
-	self flag: 'This initialization code should be done only in dev mode and serialized for the experiment.'.
-	self addPreSurvey: self class buildIntroSurvey.
-	self addPostSurvey: self class buildDemographicSurvey.
-	self addPostSurvey: self class buildPostExperimentSurvey.
-	self addPostSurvey: self class buildContactAndCommentSurvey.
-	tasks := self class buildTasks
-	
-]
-
 { #category : #accessing }
 ObjectCentricDebuggingExperiment >> logger [
 
