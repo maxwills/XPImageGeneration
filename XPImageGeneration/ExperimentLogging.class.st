@@ -20,5 +20,7 @@ ExperimentLogging class >> setLoggerFor: anExperiment [
 		logger taskFinished: task.
 		anExperiment isFinished ifTrue: [ 
 			self flag: 'Does that work?'.
-			logger experimentFinished: anExperiment ] ]
+			logger experimentFinished: anExperiment ] ].
+	anExperiment whenSurveyClosedDo: [ :survey | 
+		logger surveyClosed: survey ]
 ]
