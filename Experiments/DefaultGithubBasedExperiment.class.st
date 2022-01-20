@@ -56,6 +56,15 @@ DefaultGithubBasedExperiment >> closeable [
 ]
 
 { #category : #'serialize/materialize' }
+DefaultGithubBasedExperiment >> ensureSurveysDefinitionFolder [
+
+	| dir |
+	dir := self surveysDirectory.
+	dir ensureCreateDirectory.
+	^ dir
+]
+
+{ #category : #'serialize/materialize' }
 DefaultGithubBasedExperiment >> ensureTasksDefinitionFolder [
 
 	| dir |
@@ -117,6 +126,12 @@ DefaultGithubBasedExperiment >> relativeTasksDirectory [
 { #category : #testing }
 DefaultGithubBasedExperiment >> sequentialTasks [
 	^true
+]
+
+{ #category : #'serialize/materialize' }
+DefaultGithubBasedExperiment >> surveysDirectory [
+
+	^ self iceRepository location / 'surveysDefinition' / self experienceId
 ]
 
 { #category : #'serialize/materialize' }
