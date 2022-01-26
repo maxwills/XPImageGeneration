@@ -58,14 +58,7 @@ XPImageGeneration class >> loadBaselines [
 		baseline: 'Phex';
 		repository: 'github://Pharo-XP-Tools/Phex:xp-tools';
 		onWarning: [ :ex | ex resume ];
-		load.
-		
-	Metacello new
-		baseline: 'PharoXPEventRecorder';
-		repository: 'github://Pharo-XP-Tools/Pharo-XP-EventRecorder:main/';
-		load.
-	(self getClassNamed: #EREventRecorderSettings) url: 'https://rmod-xp.lille.inria.fr/'
-	
+		load
 ]
 
 { #category : #'as yet unclassified' }
