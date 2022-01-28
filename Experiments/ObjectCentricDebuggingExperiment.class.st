@@ -130,10 +130,10 @@ ObjectCentricDebuggingExperiment class >> buildExperimentSurveys [
 
 	| svs |
 	svs := OrderedCollection new.
-	svs addAll: self buildIntroSurvey.
-	svs addAll: self buildDemographicSurvey.
-	svs addAll: self buildPostExperimentSurvey.
-	svs addAll: self buildContactAndCommentSurvey.
+	svs add: self buildIntroSurvey.
+	svs add: self buildDemographicSurvey.
+	svs add: self buildPostExperimentSurvey.
+	svs add: self buildContactAndCommentSurvey.
 	^svs
 ]
 
