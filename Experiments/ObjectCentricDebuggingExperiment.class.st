@@ -665,6 +665,14 @@ ObjectCentricDebuggingExperiment >> findClass: aSymbol [
 	^ self class environment at: aSymbol
 ]
 
+{ #category : #'task management' }
+ObjectCentricDebuggingExperiment >> finishTask: aTask [
+	super finishTask: aTask.
+	aTask == tasks first ifFalse:[^self].
+	
+	XPImageGeneration activateObjectCentricDebugging
+]
+
 { #category : #accessing }
 ObjectCentricDebuggingExperiment >> logger [
 
@@ -694,4 +702,12 @@ A: Control. Its difficult to selectively modify what happens between a baseline 
 		ObjectCentricDebuggingExperiment developmentMode ifFalse: [ 
 			self class compile: 'downloadAndInstallTasks
 		^self' ] ]
+]
+
+{ #category : #'task management' }
+ObjectCentricDebuggingExperiment >> startTask: aTask [
+	super startTask: aTask.
+	aTask == tasks first ifFalse:[^self].
+	
+	XPImageGeneration deactivateObjectCentricDebugging
 ]
