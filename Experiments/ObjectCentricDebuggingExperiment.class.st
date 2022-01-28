@@ -610,8 +610,7 @@ ObjectCentricDebuggingExperiment >> downloadAndInstallSpy [
 	Metacello new
 		baseline: 'BaselineOfDSSpyEventRecorder';
 		repository:'github://Pharo-XP-Tools/DebuggingSpy-EventRecorder:main';
-		load.
-	(Smalltalk at: #EREventRecorderSettings) url: 'https://rmod-xp.lille.inria.fr/'
+		load
 ]
 
 { #category : #installation }
