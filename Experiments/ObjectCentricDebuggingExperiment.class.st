@@ -1,6 +1,9 @@
 Class {
 	#name : #ObjectCentricDebuggingExperiment,
 	#superclass : #DefaultGithubBasedExperiment,
+	#instVars : [
+		'validator'
+	],
 	#classVars : [
 		'DevelopmentMode'
 	],
@@ -417,27 +420,10 @@ ObjectCentricDebuggingExperiment class >> developmentMode: anObject [
 	DevelopmentMode := anObject
 ]
 
-{ #category : #'building - API' }
-ObjectCentricDebuggingExperiment class >> freeTextQuestion: text [
-
-	^ PhexFreeTextQuestion new
-		  title: text;
-		  yourself
-]
-
 { #category : #initialization }
 ObjectCentricDebuggingExperiment class >> initialize [
 
 	DevelopmentMode := false
-]
-
-{ #category : #'building - API' }
-ObjectCentricDebuggingExperiment class >> singleChoiceQuestion: text options: choices [
-
-	^ PhexSingleChoiceQuestion new
-		  title: text;
-		  choices: choices;
-		  yourself
 ]
 
 { #category : #'building - sources' }
@@ -583,14 +569,6 @@ The execution breaks only when the box object we instrumented writes into its `n
 '
 ]
 
-{ #category : #'building - API' }
-ObjectCentricDebuggingExperiment class >> yesNoQuestion: text [
-
-	^ PhexYesNoQuestion new
-		  title: text;
-		  yourself
-]
-
 { #category : #accessing }
 ObjectCentricDebuggingExperiment >> description [
 
@@ -607,20 +585,21 @@ ObjectCentricDebuggingExperiment >> downloadAndInstallSpy [
 	Metacello new
 		baseline: 'BaselineOfDSSpyEventRecorder';
 		repository:'github://Pharo-XP-Tools/DebuggingSpy-EventRecorder:main';
-		load.
-	(Smalltalk at: #EREventRecorderSettings) url: 'https://rmod-xp.lille.inria.fr/'
+		load
 ]
 
 { #category : #installation }
 ObjectCentricDebuggingExperiment >> downloadAndInstallTasks [
 
 	"Install the code related to the tasks. (Not the tasks descriptions presented in Phex)"
-
+	|installer|
 	Metacello new
 		baseline: 'OCDEvalTasks';
 		repository: 'github://Pharo-XP-Tools/OCDEval-Tasks:updated-task1';
 		load.
-	(self findClass: #OCDTaskInstaller) installTasks.
+	installer := (self findClass: #OCDTaskInstaller).
+	installer installTasks.
+	validator := installer buildValidator.
 	"Note that this will remove code. If developing, manually set the experiment development flag to true (ObjectCentricDebuggingExperiment developmentMode: true"
 	ObjectCentricDebuggingExperiment developmentMode ifFalse: [ 
 		(self findClass: #OCDTaskInstaller) removeTaskInstallerSilently ]
