@@ -1,6 +1,9 @@
 Class {
 	#name : #ObjectCentricDebuggingExperiment,
 	#superclass : #DefaultGithubBasedExperiment,
+	#instVars : [
+		'validator'
+	],
 	#classVars : [
 		'DevelopmentMode'
 	],
@@ -615,12 +618,14 @@ ObjectCentricDebuggingExperiment >> downloadAndInstallSpy [
 ObjectCentricDebuggingExperiment >> downloadAndInstallTasks [
 
 	"Install the code related to the tasks. (Not the tasks descriptions presented in Phex)"
-
+	|installer|
 	Metacello new
 		baseline: 'OCDEvalTasks';
 		repository: 'github://Pharo-XP-Tools/OCDEval-Tasks:updated-task1';
 		load.
-	(self findClass: #OCDTaskInstaller) installTasks.
+	installer := (self findClass: #OCDTaskInstaller).
+	installer installTasks.
+	validator := installer buildValidator.
 	"Note that this will remove code. If developing, manually set the experiment development flag to true (ObjectCentricDebuggingExperiment developmentMode: true"
 	ObjectCentricDebuggingExperiment developmentMode ifFalse: [ 
 		(self findClass: #OCDTaskInstaller) removeTaskInstallerSilently ]
