@@ -5,6 +5,88 @@ Class {
 }
 
 { #category : #actions }
+XPImageGeneration class >> activateObjectCentricDebugging [
+	<script>
+	EpMonitor disableDuring: [ 
+	StMetaBrowser class compile: 'objectCentricBreakpointCommandsWith: presenter forRootGroup: aRootCmCommandsGroup
+	<extensionCommands>
+	
+	(aRootCmCommandsGroup / ''methods'')
+		register: StHaltOnCallCommand forSpec'.
+		
+	StObjectBreakpointInspection class compile: 'objectCentricCommandsWith: presenter forRootGroup: aCmCommandsGroup
+	<extensionCommands>
+	
+	aCmCommandsGroup
+		register: (self removeBreakpointCommandFor: presenter);
+		register: (self browseBreakpointMethodCommandFor: presenter)'.
+		
+	StObjectInspectorPresenter class compile: 'objectCentricBreakpointCommandsWith: aPresenter forRootGroup: aRootCommandsGroup
+	<extensionCommands>
+	
+	aRootCommandsGroup 
+		register: (CmCommandGroup forSpec
+			beToolbarPopoverButton;
+			name: ''Halt'';
+			icon: (aPresenter application iconNamed: #smallObjects);
+			register: (StHaltOnReadCommand forSpec);
+			register: (StHaltOnWriteCommand forSpec);
+			register: (StHaltOnStateAccessCommand forSpec);
+			yourself)'.
+		
+	StRawInspection class compile: 'objectCentricBreakpointCommandsWith: presenter forRootGroup: aRootCmCommandsGroup
+	<extensionCommands>
+	({StHaltOnReadCommand forSpec.
+	StHaltOnWriteCommand forSpec.
+	StHaltOnStateAccessCommand forSpec}
+		select: [ :spCommand | spCommand decoratedCommand appliesTo: presenter ])
+		do: [ :spCommand | aRootCmCommandsGroup register: spCommand ]'	
+			]
+		
+]
+
+{ #category : #actions }
+XPImageGeneration class >> deactivateObjectCentricDebugging [
+<script>
+EpMonitor disableDuring: [ 
+	StMetaBrowser class compile: 'objectCentricBreakpointCommandsWith: presenter forRootGroup: aRootCmCommandsGroup
+"	<extensionCommands>"
+	
+	(aRootCmCommandsGroup / ''methods'')
+		register: StHaltOnCallCommand forSpec'.
+		
+	StObjectBreakpointInspection class compile: 'objectCentricCommandsWith: presenter forRootGroup: aCmCommandsGroup
+	"<extensionCommands>"
+	
+	aCmCommandsGroup
+		register: (self removeBreakpointCommandFor: presenter);
+		register: (self browseBreakpointMethodCommandFor: presenter)'.
+		
+	StObjectInspectorPresenter class compile: 'objectCentricBreakpointCommandsWith: aPresenter forRootGroup: aRootCommandsGroup
+	"<extensionCommands>"
+	
+	aRootCommandsGroup 
+		register: (CmCommandGroup forSpec
+			beToolbarPopoverButton;
+			name: ''Halt'';
+			icon: (aPresenter application iconNamed: #smallObjects);
+			register: (StHaltOnReadCommand forSpec);
+			register: (StHaltOnWriteCommand forSpec);
+			register: (StHaltOnStateAccessCommand forSpec);
+			yourself)'.
+		
+	StRawInspection class compile: 'objectCentricBreakpointCommandsWith: presenter forRootGroup: aRootCmCommandsGroup
+	"<extensionCommands>"
+	({StHaltOnReadCommand forSpec.
+	StHaltOnWriteCommand forSpec.
+	StHaltOnStateAccessCommand forSpec}
+		select: [ :spCommand | spCommand decoratedCommand appliesTo: presenter ])
+		do: [ :spCommand | aRootCmCommandsGroup register: spCommand ]'	
+			]
+		
+]
+
+{ #category : #actions }
 XPImageGeneration class >> fixRichTextComposerErrorForClassNamed: className [
 
 	| methodSource theClass |
@@ -33,7 +115,7 @@ XPImageGeneration class >> generateImage [
 		self install ]
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #utils }
 XPImageGeneration class >> getClassNamed: aString [
 
 	^ self environment at: aString
@@ -47,7 +129,7 @@ XPImageGeneration class >> install [
 	self fixRichTextComposerErrors
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #actions }
 XPImageGeneration class >> loadBaselines [
 
 	"Silent-ish loading"
@@ -61,7 +143,7 @@ XPImageGeneration class >> loadBaselines [
 		load
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #actions }
 XPImageGeneration class >> loadExperimentsPackage [
 
 	"Loads the unloaded package Experiments"

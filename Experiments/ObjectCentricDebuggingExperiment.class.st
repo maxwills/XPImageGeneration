@@ -2,7 +2,8 @@ Class {
 	#name : #ObjectCentricDebuggingExperiment,
 	#superclass : #DefaultGithubBasedExperiment,
 	#instVars : [
-		'validator'
+		'validator',
+		'participantUUID'
 	],
 	#classVars : [
 		'DevelopmentMode'
@@ -665,11 +666,31 @@ ObjectCentricDebuggingExperiment >> findClass: aSymbol [
 	^ self class environment at: aSymbol
 ]
 
+{ #category : #'task management' }
+ObjectCentricDebuggingExperiment >> finishTask: aTask [
+	super finishTask: aTask.
+	aTask == tasks first ifFalse:[^self].
+	
+	XPImageGeneration activateObjectCentricDebugging
+]
+
+{ #category : #initialization }
+ObjectCentricDebuggingExperiment >> generateParticipantUUID [
+
+	^ participantUUID ifNil: [ 
+		  | str |
+		  str := WriteStream on: String new.
+		  str << 'User-'.
+		  str << UUID new asString.
+		  str << DateAndTime now asNanoSeconds printString.
+		  participantUUID := str contents ]
+]
+
 { #category : #accessing }
 ObjectCentricDebuggingExperiment >> logger [
 
 	^ logger ifNil: [ 
-		  logger := (self findClass: #ExperimentLoggerDSSpy) new ]
+		  logger := (self findClass: #ExperimentLoggerDSSpy) on: self ]
 ]
 
 { #category : #accessing }
@@ -694,4 +715,12 @@ A: Control. Its difficult to selectively modify what happens between a baseline 
 		ObjectCentricDebuggingExperiment developmentMode ifFalse: [ 
 			self class compile: 'downloadAndInstallTasks
 		^self' ] ]
+]
+
+{ #category : #'task management' }
+ObjectCentricDebuggingExperiment >> startTask: aTask [
+	super startTask: aTask.
+	aTask == tasks first ifFalse:[^self].
+	
+	XPImageGeneration deactivateObjectCentricDebugging
 ]
