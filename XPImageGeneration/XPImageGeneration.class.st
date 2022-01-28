@@ -134,11 +134,11 @@ XPImageGeneration class >> loadBaselines [
 
 	"Silent-ish loading"
 
-	"Phex should always point to the Pharo-XP-Tools Phex repository. Don't change this unless you have your own modified Phex"
+	"Phex should always point to the main branch of Pharo-XP-Tools Phex repository. Don't change this unless you have your own modified Phex"
 
 	Metacello new
 		baseline: 'Phex';
-		repository: 'github://Pharo-XP-Tools/Phex:xp-tools';
+		repository: 'github://Pharo-XP-Tools/Phex:main';
 		onWarning: [ :ex | ex resume ];
 		load
 ]
