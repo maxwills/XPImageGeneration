@@ -33,7 +33,7 @@ XPImageGeneration class >> generateImage [
 		self install ]
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #utils }
 XPImageGeneration class >> getClassNamed: aString [
 
 	^ self environment at: aString
@@ -47,7 +47,7 @@ XPImageGeneration class >> install [
 	self fixRichTextComposerErrors
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #actions }
 XPImageGeneration class >> loadBaselines [
 
 	"Silent-ish loading"
@@ -61,7 +61,7 @@ XPImageGeneration class >> loadBaselines [
 		load
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #actions }
 XPImageGeneration class >> loadExperimentsPackage [
 
 	"Loads the unloaded package Experiments"
