@@ -564,8 +564,43 @@ In the raw pane of the inspector opened on your box object:
 * Right-click on that  item, and select `halt on write` in the menu
 * Proceed the execution in the debugger
 
-The test continues and  iterates over the hundred boxes.
+The test continues and iterates over the hundred boxes.
 The execution breaks only when the box object we instrumented writes into its `name` instance variable. All other objects are not affected by the breakpoint.
+
+## Removing and disabling breakpoints 
+Breakpoints can be definitely removed, or temporary disabled.
+
+**From the breakpoint navigator**
+The breakpoint navigator gives us views and control over breakpoints installed in the system, such as visualizing where breakpoints are located in the source code and disabling/enabling them dynamically.
+
+The navigator is accessible through Pharo main menu:
+
+![breakpoint-nav](https://github.com/StevenCostiou/Pharo-VariableBreakpoint-Tutorial/raw/main/pictures/breakpoint-bnav-menu.png)
+
+In this navigator, you see the following elements: 
+1. The list of installed breakpoints in the system 
+2. The list of methods affected by the selected breakpoint
+3. The source code of the selected affected method, with the breakpoint locations highlighted
+
+To enable or disable a breakpoint, just tick and untick the checkbox of the breakpoint.
+Disabling a breakpoint does not uninstall it, but it stops having any effect.
+Disabling and enabling breakpoints can be done dynamically at any point when your program is running.
+
+To remove a breakpoint, just right click on the breakpoint line and select _remove_.
+
+When you select a breakpoint, you see the list of methods affected by that breakpoint.
+When you select one of these methods, you see the source code of that method with, highlighted, all the locations in the source code where (or when!) the breakpoint will interrupt the execution.
+
+![breakpoint-nav-menu](https://github.com/StevenCostiou/Pharo-VariableBreakpoint-Tutorial/raw/main/pictures/breakpoint-navigator.png)
+
+**From the inspector**
+Removing a breakpoint from the inspector is straightforward.
+Just inspect the object on which you installed a breakpoint. 
+Go into the breakpoint pane: you can control breakpoints from there in the same manner as in the breakpoint navigator.
+
+### Exercise 3
+Do again exercise 1 and 2, but this time experiment breakpoint enabling/disabling and uninstalling through the breakpoint navigator and through the breakpoint pane when you inspect objects.
+
 '
 ]
 
@@ -573,6 +608,15 @@ The execution breaks only when the box object we instrumented writes into its `n
 ObjectCentricDebuggingExperiment >> description [
 
 	^ 'Object-Centric Debugging Experiment'
+]
+
+{ #category : #installation }
+ObjectCentricDebuggingExperiment >> downloadAndInstallExternalTools [
+
+	Metacello new
+		baseline: 'BreakpointNavigator';
+		repository: 'github://StevenCostiou/BreakpointNavigator:main';
+		load
 ]
 
 { #category : #installation }
@@ -643,6 +687,7 @@ ObjectCentricDebuggingExperiment >> prepareSystemForExperiment [
 A: Control. Its difficult to selectively modify what happens between a baseline load and any of its dependencies. We do a manual installation instead, controlling the order, and other aspects such as changes logging."
 
 	EpMonitor disableDuring: [ 
+		self downloadAndInstallExternalTools.
 		self downloadAndInstallSpy.
 		self downloadAndInstallTasks.
 		"remove the installation code (to cover tasks hints)"
