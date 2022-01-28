@@ -420,27 +420,10 @@ ObjectCentricDebuggingExperiment class >> developmentMode: anObject [
 	DevelopmentMode := anObject
 ]
 
-{ #category : #'building - API' }
-ObjectCentricDebuggingExperiment class >> freeTextQuestion: text [
-
-	^ PhexFreeTextQuestion new
-		  title: text;
-		  yourself
-]
-
 { #category : #initialization }
 ObjectCentricDebuggingExperiment class >> initialize [
 
 	DevelopmentMode := false
-]
-
-{ #category : #'building - API' }
-ObjectCentricDebuggingExperiment class >> singleChoiceQuestion: text options: choices [
-
-	^ PhexSingleChoiceQuestion new
-		  title: text;
-		  choices: choices;
-		  yourself
 ]
 
 { #category : #'building - sources' }
@@ -584,14 +567,6 @@ In the raw pane of the inspector opened on your box object:
 The test continues and  iterates over the hundred boxes.
 The execution breaks only when the box object we instrumented writes into its `name` instance variable. All other objects are not affected by the breakpoint.
 '
-]
-
-{ #category : #'building - API' }
-ObjectCentricDebuggingExperiment class >> yesNoQuestion: text [
-
-	^ PhexYesNoQuestion new
-		  title: text;
-		  yourself
 ]
 
 { #category : #accessing }
