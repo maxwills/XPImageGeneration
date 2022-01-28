@@ -2,7 +2,8 @@ Class {
 	#name : #ObjectCentricDebuggingExperiment,
 	#superclass : #DefaultGithubBasedExperiment,
 	#instVars : [
-		'validator'
+		'validator',
+		'participantUUID'
 	],
 	#classVars : [
 		'DevelopmentMode'
@@ -673,11 +674,23 @@ ObjectCentricDebuggingExperiment >> finishTask: aTask [
 	XPImageGeneration activateObjectCentricDebugging
 ]
 
+{ #category : #initialization }
+ObjectCentricDebuggingExperiment >> generateParticipantUUID [
+
+	^ participantUUID ifNil: [ 
+		  | str |
+		  str := WriteStream on: String new.
+		  str << 'User-'.
+		  str << UUID new asString.
+		  str << DateAndTime now asNanoSeconds printString.
+		  participantUUID := str contents ]
+]
+
 { #category : #accessing }
 ObjectCentricDebuggingExperiment >> logger [
 
 	^ logger ifNil: [ 
-		  logger := (self findClass: #ExperimentLoggerDSSpy) new ]
+		  logger := (self findClass: #ExperimentLoggerDSSpy) on: self ]
 ]
 
 { #category : #accessing }

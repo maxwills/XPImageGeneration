@@ -4,8 +4,20 @@ I am a logger that uses the DSSpy framework to log elements from PhexExperiments
 Class {
 	#name : #ExperimentLoggerDSSpy,
 	#superclass : #AbstractExperimentLogger,
+	#instVars : [
+		'experiment'
+	],
 	#category : #'Experiments-OCDbg'
 }
+
+{ #category : #'instance creation' }
+ExperimentLoggerDSSpy class >> on: anExperiment [
+
+	^ self basicNew
+		  experiment: anExperiment;
+		  initialize;
+		  yourself
+]
 
 { #category : #logging }
 ExperimentLoggerDSSpy >> dsSpyClass [
@@ -21,6 +33,12 @@ ExperimentLoggerDSSpy >> dsSpyClass [
 ExperimentLoggerDSSpy >> dsSpyInstrumenterClass [
 
 	^ self class environment at: #DSSpyInstrumenter
+]
+
+{ #category : #accessing }
+ExperimentLoggerDSSpy >> experiment: anObject [
+
+	experiment := anObject
 ]
 
 { #category : #logging }
@@ -42,6 +60,19 @@ ExperimentLoggerDSSpy >> experimentLoaded: anExperiment [
 	dsSpyInstrumentationClass := self dsSpyInstrumenterClass.
 	dsSpyClass logOnlyWhenTaskStarted: true.
 	dsSpyInstrumentationClass instrumentSystem
+]
+
+{ #category : #initialization }
+ExperimentLoggerDSSpy >> initialize [
+	|concreteLogger|
+	super initialize.
+	concreteLogger := DSEventRecorderLogger new.
+	concreteLogger setExperiment: experiment.
+	concreteLogger projectName: experiment experienceId.
+	concreteLogger participantUUID: experiment generateParticipantUUID.
+	DSSpy logger: concreteLogger 
+	
+	
 ]
 
 { #category : #logging }

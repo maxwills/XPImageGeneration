@@ -21,6 +21,7 @@ ExperimentLogging class >> setLoggerFor: anExperiment [
 		logger taskFinished: task ].
 	anExperiment whenFinishedDo: [ 
 		logger experimentFinished: anExperiment ].
-	anExperiment whenSurveyClosedDo: [ :survey | 
-		logger surveyClosed: survey ]
+	anExperiment whenSurveyClosedDo: [ :survey | 		
+		logger surveyClosed: survey.
+		anExperiment serializeSurveys ]
 ]
