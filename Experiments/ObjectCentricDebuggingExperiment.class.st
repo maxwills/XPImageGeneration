@@ -391,6 +391,7 @@ ObjectCentricDebuggingExperiment class >> buildTasks [
 	task requiredAnswer: 'You must provide an answer'.
 	task requiresAnswer: true.
 	task description: self task1Source.
+	task contents: task description.
 	tasks add: task.
 	
 	task := PhexTask new.
@@ -398,6 +399,7 @@ ObjectCentricDebuggingExperiment class >> buildTasks [
 	task requiredAnswer: 'You have no answer to provide'.
 	task requiresAnswer: false.
 	task description: self tutorialTaskSource.
+	task contents: task description.
 	tasks add: task.
 	
 	task := PhexTask new.
@@ -405,6 +407,7 @@ ObjectCentricDebuggingExperiment class >> buildTasks [
 	task requiredAnswer: 'You must provide an answer'.
 	task requiresAnswer: true.
 	task description: self task2Source.
+	task contents: task description.
 	tasks add: task.
 	
 	^tasks
