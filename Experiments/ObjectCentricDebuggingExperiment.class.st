@@ -3,8 +3,7 @@ Class {
 	#superclass : #DefaultGithubBasedExperiment,
 	#instVars : [
 		'validator',
-		'participantUUID',
-		'generated'
+		'participantUUID'
 	],
 	#classVars : [
 		'DevelopmentMode'
@@ -691,25 +690,10 @@ ObjectCentricDebuggingExperiment >> generateParticipantUUID [
 ]
 
 { #category : #accessing }
-ObjectCentricDebuggingExperiment >> generated [
-
-	^ generated ifNil: [ generated := false ]
-]
-
-{ #category : #accessing }
 ObjectCentricDebuggingExperiment >> logger [
 
 	^ logger ifNil: [ 
 		  logger := (self findClass: #ExperimentLoggerDSSpy) on: self ]
-]
-
-{ #category : #'serialize/materialize' }
-ObjectCentricDebuggingExperiment >> materialize [
-
-	self generated ifFalse: [ 
-		self class buildExperiment.
-		generated := true ].
-	super materialize
 ]
 
 { #category : #accessing }
