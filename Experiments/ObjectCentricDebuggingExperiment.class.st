@@ -138,7 +138,7 @@ ObjectCentricDebuggingExperiment class >> buildExperimentSurveys [
 
 { #category : #building }
 ObjectCentricDebuggingExperiment class >> buildIntroSurvey [
-	|textStream choices question survey |
+	|textStream question survey |
 	textStream := WriteStream on: String new.
 	textStream << 'Dear Participant,'.
 	textStream cr.
@@ -172,8 +172,7 @@ ObjectCentricDebuggingExperiment class >> buildIntroSurvey [
 	textStream cr.
 	textStream << 'Do you agree with or Data Policy Content? *If you do not agree, please leave the experiment*'.
 	
-	choices := #('yes' 'no').
-	question := self singleChoiceQuestion: textStream contents options: choices.
+	question := self yesNoQuestion: textStream contents .
 	survey := PhexSurvey preExperimentSurvey.
 	survey title: 'Experiment introduction and data policy.'.
 	survey questions: { question }.
