@@ -121,7 +121,8 @@ ObjectCentricDebuggingExperiment class >> buildExperiment [
 	xp tasks: tasks.
 	surveys do:[:s| xp addSurvey: s].
 	xp serializeTasks.
-	xp serializeSurveys
+	xp serializeSurveys.
+	xp inspect
 ]
 
 { #category : #building }
@@ -304,7 +305,7 @@ ObjectCentricDebuggingExperiment class >> buildPostTaskSurvey [
 
 	| survey |
 	survey := PhexSurvey new.
-	survey title: 'Demographic information'.
+	survey title: 'Post-task survey'.
 
 
 	survey addQuestion: (self
