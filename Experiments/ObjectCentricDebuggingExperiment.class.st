@@ -121,6 +121,7 @@ ObjectCentricDebuggingExperiment class >> buildExperiment [
 	
 	xp := self basicNew.
 	xp tasks: tasks.
+	1 to: surveys size do:[:i| (surveys at: i) order: i]. 
 	surveys do:[:s| xp addSurvey: s].
 	xp serializeTasks.
 	xp serializeSurveys.
