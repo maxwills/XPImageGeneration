@@ -114,6 +114,8 @@ ObjectCentricDebuggingExperiment class >> buildExperiment [
 		| firstTask lastTask |
 		firstTask := tasks removeFirst.
 		lastTask := tasks removeLast.
+		firstTask order: lastTask order.
+		lastTask order: 1.
 		tasks addFirst: lastTask.
 		tasks addLast: firstTask ].
 	
@@ -386,27 +388,30 @@ ObjectCentricDebuggingExperiment class >> buildTasks [
 	tasks := OrderedCollection new.
 	
 	task := PhexTask new.
-	task name: 'Task 1'.
+	task title: 'Task 1'.
 	task requiredAnswer: 'You must provide an answer'.
 	task requiresAnswer: true.
 	task description: self task1Source.
 	task contents: task description.
+	task order: 1.
 	tasks add: task.
 	
 	task := PhexTask new.
-	task name: 'Tutorial'.
+	task title: 'Tutorial'.
 	task requiredAnswer: 'You have no answer to provide'.
 	task requiresAnswer: false.
 	task description: self tutorialTaskSource.
 	task contents: task description.
+	task order: 2.
 	tasks add: task.
 	
 	task := PhexTask new.
-	task name: 'Task 2'.
+	task title: 'Task 2'.
 	task requiredAnswer: 'You must provide an answer'.
 	task requiresAnswer: true.
 	task description: self task2Source.
 	task contents: task description.
+	task order: 3.
 	tasks add: task.
 	
 	^tasks

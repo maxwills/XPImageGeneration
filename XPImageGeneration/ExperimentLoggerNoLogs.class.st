@@ -40,7 +40,7 @@ ExperimentLoggerNoLogs >> taskFinished: aTask [
 	"Called by the framework when a task was finished(answer was submitted) by the user. "
 
 	^ self inform:
-		  'The task ' , aTask name , 'has been finished.'
+		  'The task ' , aTask title , 'has been finished.'
 ]
 
 { #category : #logging }
@@ -49,5 +49,5 @@ ExperimentLoggerNoLogs >> taskStarted: aTask [
 	"Called by the framework when a task was started by the user. "
 
 	^ self inform:
-		  'The task ' , aTask name , 'has been started.'
+		  'The task ' , aTask title , 'has been started.'
 ]
