@@ -176,8 +176,10 @@ ObjectCentricDebuggingExperiment class >> buildIntroSurvey [
 	textStream cr.
 	textStream << 'Do you agree with or Data Policy Content? *If you do not agree, please leave the experiment*'.
 	
-	question := self yesNoQuestion: textStream contents .
-	survey := PhexSurvey preExperimentSurvey.
+	question := PhexAgreementQuestion new
+		  title: textStream contents;
+		  yourself.
+	survey := PhexSurvey agreementSurvey.
 	survey title: 'Experiment introduction and data policy.'.
 	survey questions: { question }.
 	^ survey
