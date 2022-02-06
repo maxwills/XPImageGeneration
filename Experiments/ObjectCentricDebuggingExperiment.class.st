@@ -97,7 +97,7 @@ ObjectCentricDebuggingExperiment class >> buildDemographicSurvey [
 
 { #category : #building }
 ObjectCentricDebuggingExperiment class >> buildExperiment [
-
+	<script>
 	| tasks postTaskSurvey surveys xp |
 	tasks := self buildTasks.
 	surveys := self buildExperimentSurveys.
