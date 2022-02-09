@@ -646,7 +646,17 @@ ObjectCentricDebuggingExperiment >> downloadAndInstallSpy [
 
 { #category : #installation }
 ObjectCentricDebuggingExperiment >> downloadAndInstallTasks [
-		^self
+
+	"Install the code related to the tasks. (Not the tasks descriptions presented in Phex)"
+
+	Metacello new
+		baseline: 'OCDEvalTasks';
+		repository: 'github://Pharo-XP-Tools/OCDEval-Tasks:updated-task1';
+		load.
+	(self findClass: #OCDTaskInstaller) installTasks.
+	"Note that this will remove code. If developing, manually set the experiment development flag to true (ObjectCentricDebuggingExperiment developmentMode: true"
+	ObjectCentricDebuggingExperiment developmentMode ifFalse: [ 
+		(self findClass: #OCDTaskInstaller) removeTaskInstallerSilently ]
 ]
 
 { #category : #accessing }
