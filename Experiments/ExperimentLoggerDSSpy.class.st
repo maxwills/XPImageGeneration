@@ -81,6 +81,14 @@ ExperimentLoggerDSSpy >> initialize [
 ]
 
 { #category : #logging }
+ExperimentLoggerDSSpy >> logTaskSuccess: aBoolean forTask: aTask [
+
+	DSTaskSuccessRecord for: { 
+			aTask.
+			aBoolean }
+]
+
+{ #category : #logging }
 ExperimentLoggerDSSpy >> surveyClosed: aSurvey [
 
 	"Called by the framework when a task was finished(answer was submitted) by the user. "

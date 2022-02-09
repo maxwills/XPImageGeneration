@@ -31,6 +31,14 @@ ExperimentLoggerNoLogs >> experimentLoaded: anExperiment [
 ]
 
 { #category : #logging }
+ExperimentLoggerNoLogs >> logTaskSuccess: aBoolean forTask: aTask [
+
+	self inform: aTask printString , (aBoolean
+			 ifTrue: [ ' has succeded' ]
+			 ifFalse: [ ' has failed' ])
+]
+
+{ #category : #logging }
 ExperimentLoggerNoLogs >> surveyClosed: aSurvey [
 
 	"Called by the framework when a task was finished(answer was submitted) by the user. "

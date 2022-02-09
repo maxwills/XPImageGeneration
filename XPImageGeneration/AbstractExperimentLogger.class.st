@@ -29,6 +29,13 @@ AbstractExperimentLogger >> experimentLoaded: anExperiment [
 ]
 
 { #category : #logging }
+AbstractExperimentLogger >> logTaskSuccess: aBoolean forTask: aTask [
+
+
+	^ self subclassResponsibility
+]
+
+{ #category : #logging }
 AbstractExperimentLogger >> surveyClosed: aSurvey [
 
 	"Called by the framework when a survey is answred by the user. "

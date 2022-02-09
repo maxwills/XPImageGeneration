@@ -735,3 +735,16 @@ ObjectCentricDebuggingExperiment >> startTask: aTask [
 	
 	XPImageGeneration deactivateObjectCentricDebugging
 ]
+
+{ #category : #actions }
+ObjectCentricDebuggingExperiment >> validateTask: aTask [
+
+	| str selector |
+	str := WriteStream on: String new.
+	str << 'test'.
+	str << aTask title asCamelCase.
+	str << 'Validity'.
+	selector := str asSymbol.
+	(validator respondsTo: selector) ifTrue: [ 
+		logger logTaskSuccess: (validator perform: selector) forTask: aTask ]
+]
