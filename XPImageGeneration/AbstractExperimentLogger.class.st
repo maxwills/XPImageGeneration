@@ -8,6 +8,11 @@ Class {
 }
 
 { #category : #logging }
+AbstractExperimentLogger >> authorizeDataSending [
+	^self subclassResponsibility 
+]
+
+{ #category : #logging }
 AbstractExperimentLogger >> experimentFinished: anExperiment [
 
 	"Called by the framework when all the tasks of an Experiment hhave been answered"

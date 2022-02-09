@@ -8,6 +8,11 @@ Class {
 }
 
 { #category : #logging }
+ExperimentLoggerNoLogs >> authorizeDataSending [ 
+	"The no-logger does not send data"
+]
+
+{ #category : #logging }
 ExperimentLoggerNoLogs >> experimentFinished: anExperiment [
 
 	"Called by the framework when all the tasks of an Experiment hhave been answered"

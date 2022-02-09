@@ -20,6 +20,11 @@ ExperimentLoggerDSSpy class >> on: anExperiment [
 ]
 
 { #category : #logging }
+ExperimentLoggerDSSpy >> authorizeDataSending [
+	DSSpy logger authorizeDataSending 
+]
+
+{ #category : #logging }
 ExperimentLoggerDSSpy >> dsSpyClass [
 
 	"Why like this? DDSpy is installed whe the experiment starts. When developing the experiment (without starting the experiment), the class is not loaded. This prevent some warnings."
