@@ -744,7 +744,7 @@ ObjectCentricDebuggingExperiment >> validateTask: aTask [
 	str << 'test'.
 	str << aTask title asCamelCase.
 	str << 'Validity'.
-	selector := str asSymbol.
+	selector := str contents asSymbol.
 	(validator respondsTo: selector) ifTrue: [ 
 		logger logTaskSuccess: (validator perform: selector) forTask: aTask ]
 ]
