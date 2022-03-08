@@ -451,7 +451,7 @@ During the metalink installation process, each time a metalink object annotates 
 ## The problem
 In this task, we provide a test method  (`MetalinkStrangeNodeTest>>#testCollectionContents`, click on it) that installs a metalink object on an instance variable `instVar` of a class `ReflectivityExamples2`. 
 
-This instance variable is referenced in 4 expressions in the source code of the `ReflectivityExamples2` class. Therefore, the test expects that after installation, the metalink’s set will hold 4 AST nodes, one for each source code expression referring to instVar. 
+This instance variable is referenced in 4 expressions in the source code of the `ReflectivityExamples2` class. The developer of this test thought that after installation, the metalink’s set would hold 4 AST nodes, one for each source code expression referring to instVar. 
 
 However, the test fails due to the metalink holding an incorrect number of nodes after installation: there is an extra node in the nodes set of the metalink. 
 
@@ -461,7 +461,7 @@ We consider that the metalink installation process is correct: it is the test th
 Your task is to understand why the test is not correctly testing the metalink installation process:.
 You have to: 
 * Understand the error in the test
-* Fix the error to make the test pass
+* Fix the test to make it pass
 * Explain why the number of nodes is incorrect, i.e., the reason why there is an extra node (where in the source code, and why). 
 
 To help you, we stored the set of nodes held by the metalink in an instance variable in the test. This variable is named nodes
