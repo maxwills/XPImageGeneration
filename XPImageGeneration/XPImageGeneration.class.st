@@ -126,7 +126,9 @@ XPImageGeneration class >> install [
 
 	"Executed after the baseline. Fixes some bugs"
 
-	self fixRichTextComposerErrors
+	self fixRichTextComposerErrors.
+	ExampleExperiment removeFromSystem.
+	PhexTaskLauncherPresenter open loadExperience: ObjectCentricDebuggingExperiment
 ]
 
 { #category : #actions }
