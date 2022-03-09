@@ -728,6 +728,12 @@ A: Control. Its difficult to selectively modify what happens between a baseline 
 		^self' ] ]
 ]
 
+{ #category : #testing }
+ObjectCentricDebuggingExperiment >> runTasksInOrder [
+
+	^ true
+]
+
 { #category : #'task management' }
 ObjectCentricDebuggingExperiment >> startTask: aTask [
 	super startTask: aTask.
