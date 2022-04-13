@@ -23,10 +23,10 @@ ObjectCentricDebuggingExperiment class >> buildContactAndCommentSurvey [
 			 'If you have any comments on the experiment, please add them here').
 
 	survey addQuestion: (self freeTextQuestion:
-			 'If you would be informed about results of this work, please add your e-mail').
+			 'If you would be informed about the results of this work, please add your e-mail').
 
 	survey addQuestion: (self freeTextQuestion:
-			 'If you would participate to a more detailed interview, please add your e-mail').
+			 'If you would participate in a more detailed interview, please add your e-mail').
 
 	survey addQuestion:
 		(self yesNoQuestion:
@@ -45,15 +45,20 @@ ObjectCentricDebuggingExperiment class >> buildDemographicSurvey [
 	survey addQuestion: (self
 			 singleChoiceQuestion:
 			 'What is your highest achieved level of education?'
-			 options: #( 'Bachelor or equivalent' 'Master or equivalent'
-				    'PhD or higher academic title' 'None of the above' )).
+			 options: #( 'High School but did not graduate' 'High School graduate or GED'
+			 	     'Some college or 2-year degree' 'Bachelor in CS (Computer Science)'
+				     'Bachelor in STEM (Science, Technology, Engineering and Mathematics)'
+				     'Bachelor in a different area than CS or STEM' 'Master in CS'
+				     'Master in STEM' 'Master in a different area than CS or STEM'
+				     'PhD or higher academic title in CS' 'PhD or higher academic title in STEM'
+				     'PhD or higher academic title in a different area than CS or STEM')).
 
 	survey addQuestion: (self
 			 singleChoiceQuestion:
-			 'What is you current job position? (CS = Computer Science)'
-			 options: #( 'Student' 'Software developer or engineer'
-				    'Researcher' 'CS Engineer but not in software'
-				    'Other CS position' 'Other (not CS)' )).
+			 'What is you current job position?'
+			 options: #( 'Student' 'Part-Time Dev'
+				    'Full-Time Dev' 'Unemployed'
+				    'Self-Employed' )).
 
 	survey addQuestion: (self
 			 singleChoiceQuestion:
@@ -172,7 +177,7 @@ ObjectCentricDebuggingExperiment class >> buildIntroSurvey [
 	textStream cr.
 	textStream cr.
 	textStream <<'The data handling and storing is under the responsibility of Steven Costiou, Inria Lille - Nord Europe, contact: steven.costiou@inria.fr
-	The data analysis is under the responsibility of Alberto Bachelli, University of Zurich, contact: '.
+	The data analysis is under the responsibility of Alberto Bachelli, University of Zurich, contact: bacchelli@ifi.uzh.ch'.
 	textStream cr.
 	textStream << 'Do you agree with or Data Policy Content? *If you do not agree, please leave the experiment*'.
 	
@@ -195,14 +200,14 @@ ObjectCentricDebuggingExperiment class >> buildPostExperimentSurvey [
 
 	survey addQuestion: (self
 			 singleChoiceQuestion:
-			 '"The Task was easy." How much do you agree?'
+			 '"The Experiment was easy." How much do you agree?'
 			 options:
 				 #( 'Strongly Disagree' 'Disagree' 'Nor disagree or agree'
 				    'Agree' 'Strongly Agree' )).
 
 	survey addQuestion: (self
 			 singleChoiceQuestion:
-			 '"The Task was long." How much do you agree?'
+			 '"The Experiment was long." How much do you agree?'
 			 options:
 				 #( 'Strongly Disagree' 'Disagree' 'Nor disagree or agree'
 				    'Agree' 'Strongly Agree' )).
