@@ -45,20 +45,29 @@ ObjectCentricDebuggingExperiment class >> buildDemographicSurvey [
 	survey addQuestion: (self
 			 singleChoiceQuestion:
 			 'What is your highest achieved level of education?'
-			 options: #( 'High School but did not graduate' 'High School graduate or GED'
-			 	     'Some college or 2-year degree' 'Bachelor in CS (Computer Science)'
-				     'Bachelor in STEM (Science, Technology, Engineering and Mathematics)'
-				     'Bachelor in a different area than CS or STEM' 'Master in CS'
-				     'Master in STEM' 'Master in a different area than CS or STEM'
-				     'PhD or higher academic title in CS' 'PhD or higher academic title in STEM'
-				     'PhD or higher academic title in a different area than CS or STEM')).
+			 options: #( 
+			'High School but did not graduate' 
+			'High School graduate or GED'			 	     
+			'Some college or 2-year degree' 
+			'Bachelor in CS (Computer Science)'
+			'Bachelor in STEM (Science, Technology, Engineering and Mathematics)'
+			'Bachelor in a different area than CS or STEM' 
+			'Master in CS'
+			'Master in STEM' 
+			'Master in a different area than CS or STEM'
+			'PhD or higher academic title in CS' 
+			'PhD or higher academic title in STEM'
+			'PhD or higher academic title in a different area than CS or STEM')).
 
 	survey addQuestion: (self
 			 singleChoiceQuestion:
 			 'What is you current job position?'
-			 options: #( 'Student' 'Part-Time Dev'
-				    'Full-Time Dev' 'Unemployed'
-				    'Self-Employed' )).
+			 options: #( 
+			'Student' 
+			'Part-Time Dev'
+			'Full-Time Dev' 
+			'Unemployed'
+			'Self-Employed' )).
 
 	survey addQuestion: (self
 			 singleChoiceQuestion:
