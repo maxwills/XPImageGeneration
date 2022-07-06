@@ -414,12 +414,30 @@ ObjectCentricDebuggingExperiment class >> buildTasks [
 	tasks add: task.
 	
 	task := PhexTask new.
+	task title: 'Warmup task 1'.
+	task requiredAnswer: 'You must provide an answer'.
+	task requiresAnswer: true.
+	task description: self taskWarmup1Source.
+	task contents: task description.
+	task order: 3.
+	tasks add: task.
+	
+	task := PhexTask new.
+	task title: 'Warmup task 2'.
+	task requiredAnswer: 'You must provide an answer'.
+	task requiresAnswer: true.
+	task description: self taskWarmup2Source.
+	task contents: task description.
+	task order: 4.
+	tasks add: task.
+	
+	task := PhexTask new.
 	task title: 'Task 2'.
 	task requiredAnswer: 'You must provide an answer'.
 	task requiresAnswer: true.
 	task description: self task2Source.
 	task contents: task description.
-	task order: 3.
+	task order: 5.
 	tasks add: task.
 	
 	^tasks
@@ -512,6 +530,36 @@ However, as you will notice in the provided application and in the animated imag
 To help you, you can inspect any atom by performing a right-click on it. This action will open an inspector on that atom.
 
 **Beware:** this is a graphical application, and putting breakpoints in the display system (e.g., in the Morph class) might freeze your system.
+'
+]
+
+{ #category : #'building - sources' }
+ObjectCentricDebuggingExperiment class >> taskWarmup1Source [
+^'# Warmup task 1
+
+This task is a warmup to practice the **halt on call** breakpoint.
+
+The test `OCDPersonRegistryTest>>testRegisterPersons` is failing. 
+Try to understand why by using the **halt on call** breakpoint.
+
+Remember that object-centric operations complements standard debugging tools.
+The purpose of this task is not to restrict you to use only the **halt on call** breakpoint, but to use it when you feel necessary to complement standard debugging tools.
+
+'
+]
+
+{ #category : #'building - sources' }
+ObjectCentricDebuggingExperiment class >> taskWarmup2Source [
+^'# Warmup task 2
+
+This task is a warmup to practice the **halt on state access** breakpoint.
+
+The test `OCDPersonRegistryTest>>testPersonsAge` is failing. 
+Try to understand why by using the **halt on state access** breakpoint.
+
+Remember that object-centric operations complements standard debugging tools.
+The purpose of this task is not to restrict you to use only the **halt on state access** breakpoint, but to use it when you feel necessary to complement standard debugging tools.
+
 '
 ]
 
