@@ -51,8 +51,7 @@ ExperimentLoggerDSSpy >> experimentFinished: anExperiment [
 
 	"Called by the framework when all the tasks of an Experiment hhave been answered"
 
-	^ self inform:
-		  'The experiment: ' , anExperiment name , 'has been finished.'
+	DSSpy logger deliverDataNow
 ]
 
 { #category : #logging }
