@@ -743,7 +743,7 @@ ObjectCentricDebuggingExperiment >> findClass: aSymbol [
 ObjectCentricDebuggingExperiment >> finishTask: aTask [
 	super finishTask: aTask.
 	aTask order = 1 ifFalse:[^self].
-	
+	aTask order > 2 ifTrue:[^self].
 	XPImageGeneration activateObjectCentricDebugging
 ]
 
@@ -799,7 +799,7 @@ ObjectCentricDebuggingExperiment >> runTasksInOrder [
 { #category : #'task management' }
 ObjectCentricDebuggingExperiment >> startTask: aTask [
 	super startTask: aTask.
-	aTask == tasks first ifFalse:[^self].
+	aTask order = 1 ifFalse:[^self].
 	
 	XPImageGeneration deactivateObjectCentricDebugging
 ]
