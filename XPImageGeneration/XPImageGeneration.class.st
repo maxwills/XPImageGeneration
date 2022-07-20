@@ -108,7 +108,7 @@ XPImageGeneration class >> fixRichTextComposerErrors [
 
 { #category : #actions }
 XPImageGeneration class >> generateImage [
-
+	Author fullName: 'ExperimentFramework'.
 	EpMonitor disableDuring: [ 
 		self loadBaselines.
 		self loadExperimentsPackage.
