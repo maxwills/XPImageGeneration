@@ -549,7 +549,7 @@ ObjectCentricDebuggingExperiment class >> taskWarmup1Source [
 
 This task is a warmup to practice the **halt on call** breakpoint.
 
-The test `OCDPersonRegistryTest>>testRegisterPersons` is failing. 
+The test `OCDPersonRegistryTest>>#testRegisterPersons` is failing. 
 Try to understand why by using the **halt on call** breakpoint.
 
 Remember that object-centric operations complements standard debugging tools.
@@ -564,7 +564,7 @@ ObjectCentricDebuggingExperiment class >> taskWarmup2Source [
 
 This task is a warmup to practice the **halt on state access** breakpoint.
 
-The test `OCDPersonRegistryTest>>testPersonsAge` is failing. 
+The test `OCDPersonRegistryTest>>#testPersonsAge` is failing. 
 Try to understand why by using the **halt on state access** breakpoint.
 
 Remember that object-centric operations complements standard debugging tools.
