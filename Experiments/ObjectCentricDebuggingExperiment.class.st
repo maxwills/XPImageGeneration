@@ -516,7 +516,7 @@ AtomApp is a small graphical application that can be launched via `AtomApp class
 
 You should see the following application:
 
-![AtomApp](https://github.com/Pharo-XP-Tools/XPImageGeneration/raw/exp-ocd/resources/atoms.png)
+![AtomApp](https://github.com/Pharo-XP-Tools/xp-free-resources/blob/main/ocd/image.png)
 
 The app is composed of colored squares named atoms. 
 Each time the mouse moves over a square, the color of the square changes.
