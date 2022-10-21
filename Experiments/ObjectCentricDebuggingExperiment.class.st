@@ -483,7 +483,7 @@ During the metalink installation process, each time a metalink object annotates 
 
 ## The problem
 A developer changed something in the basecode of metalinks and now one test is failing.
-This test (`MetalinkStrangeNodeTest>>#testCollectionContents`, click on it) installs a metalink object on an instance variable `instVar` of a class `ReflectivityExamples2`. 
+This test (`MetalinkStrangeNodeTest>>#testCollectionContents`, click on it to open) installs a metalink object on an instance variable `instVar` of a class `ReflectivityExamples2`. 
 
 This instance variable is referenced in 4 expressions in the source code of the `ReflectivityExamples2` class. Before our developer modified the code, the metalink''s set would hold 4 AST nodes, one for each source code expression referring to instVar. 
 
