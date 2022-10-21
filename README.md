@@ -31,5 +31,16 @@ Metacello new
 	repository: 'github://Pharo-XP-Tools/XPImageGeneration:exp-ocd';
 	load.
 ```
+Select the newly created image in the list then click "start":
+*missing screenshot*
 
+## Starting the experiment
+
+- Agreement else it's over
+- List of task to do in order (start by the first in the list)
+- clicking on a link browses the class or method
+- provide the answer that you can, as best as you can, if you believe you did not solve the bug, please try to explain what you understood and where you stopped your investigation and why
+- finsih task when finished
+- you can save the image and continue later, however avoid that or retain the time you interrupt the experiment
+- if freeze, just restart the image
 
