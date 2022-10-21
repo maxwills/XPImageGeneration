@@ -473,7 +473,7 @@ ObjectCentricDebuggingExperiment class >> initialize [
 { #category : #'building - sources' }
 ObjectCentricDebuggingExperiment class >> task1Source [
 
-	^ '# Task 1
+	^ '# Program comprehension task
 
 A `MetaLink` is an object that annotates the Abstract Syntax Tree of a program. When the program executes, the annotated AST nodes trigger its metalinks which executes additional behavior.
 
@@ -505,7 +505,7 @@ This set is **the same as the one in the metalink object**: the AST nodes in thi
 
 { #category : #'building - sources' }
 ObjectCentricDebuggingExperiment class >> task2Source [
-^'# Task 2
+^'# Debugging task
 
 ## The problem
 AtomApp is a small graphical application that can be launched via `AtomApp class >> #run` (click on it).
