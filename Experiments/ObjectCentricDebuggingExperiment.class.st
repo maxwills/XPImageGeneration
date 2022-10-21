@@ -405,8 +405,8 @@ ObjectCentricDebuggingExperiment class >> buildTasks [
 	tasks := OrderedCollection new.
 	
 	task := PhexTask new.
-	task title: 'Task 1'.
-	task requiredAnswer: 'You must provide an answer'.
+	task title: 'Program comprehension task'.
+	task requiredAnswer: 'Explain why the number of nodes is incorrect.'.
 	task requiresAnswer: true.
 	task description: self task1Source.
 	task contents: task description.
@@ -415,7 +415,7 @@ ObjectCentricDebuggingExperiment class >> buildTasks [
 	
 	task := PhexTask new.
 	task title: 'Tutorial'.
-	task requiredAnswer: 'You have no answer to provide'.
+	task requiredAnswer: 'No answer to provide: click "ok" to continue'.
 	task requiresAnswer: false.
 	task description: self tutorialTaskSource.
 	task contents: task description.
@@ -424,7 +424,7 @@ ObjectCentricDebuggingExperiment class >> buildTasks [
 	
 	task := PhexTask new.
 	task title: 'Warmup task 1'.
-	task requiredAnswer: 'You must provide an answer'.
+	task requiredAnswer: 'Explain why the test is failing.'.
 	task requiresAnswer: true.
 	task description: self taskWarmup1Source.
 	task contents: task description.
@@ -433,7 +433,7 @@ ObjectCentricDebuggingExperiment class >> buildTasks [
 	
 	task := PhexTask new.
 	task title: 'Warmup task 2'.
-	task requiredAnswer: 'You must provide an answer'.
+	task requiredAnswer: 'Explain why the test is failing.'.
 	task requiresAnswer: true.
 	task description: self taskWarmup2Source.
 	task contents: task description.
@@ -441,8 +441,8 @@ ObjectCentricDebuggingExperiment class >> buildTasks [
 	tasks add: task.
 	
 	task := PhexTask new.
-	task title: 'Task 2'.
-	task requiredAnswer: 'You must provide an answer'.
+	task title: 'Debugging task'.
+	task requiredAnswer: 'Explain the bug and how you fixed it.'.
 	task requiresAnswer: true.
 	task description: self task2Source.
 	task contents: task description.
@@ -553,6 +553,11 @@ Try to understand why by using the **halt on call** breakpoint.
 Remember that object-centric operations complements standard debugging tools.
 The purpose of this task is not to restrict you to use only the **halt on call** breakpoint, but to use it when you feel necessary to complement standard debugging tools.
 
+It is possible that you understand why the test fails without using the debugging tools.
+If so, and for training purpose, try to use the object-centric tools to observe what you understood.
+
+For example, from reading the source code you understand that a variable is set to nil into an object and that is the source of the problem.
+Then, try to use the object-centric tools to observe the precise moment in the debugger where that variable is put to nil.
 '
 ]
 
@@ -568,6 +573,11 @@ Try to understand why by using the **halt on state access** breakpoint.
 Remember that object-centric operations complements standard debugging tools.
 The purpose of this task is not to restrict you to use only the **halt on state access** breakpoint, but to use it when you feel necessary to complement standard debugging tools.
 
+It is possible that you understand why the test fails without using the debugging tools.
+If so, and for training purpose, try to use the object-centric tools to observe what you understood.
+
+For example, from reading the source code you understand that a variable is set to nil into an object and that is the source of the problem.
+Then, try to use the object-centric tools to observe the precise moment in the debugger where that variable is put to nil.
 '
 ]
 
