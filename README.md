@@ -5,7 +5,9 @@ This experiment occurs in the context of the French ANR project ANR JCJC OCRE Ob
 During this experiment, we ask you to complete a set of tasks using the Pharo object-centric debugging tools (https://pharo.org/).
 We collect anonymous data and surveys that are automatically sent to a server hosted by Inria (https://www.inria.fr/en).
 
-To participate to the experiment, please follow the instructions below.
+**IMPORTANT: To avoid biasing the results of the experiment, please do not communicate any information about it to someone else.**
+
+To participate to the experiment, **PLEASE FOLLOW WITH GREAT ATTENTION THE INSTRUCTIONS BELOW**.
 
 ## Your participation
 
