@@ -34,7 +34,8 @@ In the official distribution list, select Pharo 9 (choose 32 or 64bits depending
 ![Select P9](https://raw.githubusercontent.com/Pharo-XP-Tools/xp-free-resources/main/ocd/select-p9.png)
 
 Select the newly created image in the list then click "start":
-*missing screenshot*
+
+[Start image](https://raw.githubusercontent.com/Pharo-XP-Tools/xp-free-resources/main/ocd/start-image.png)
 
 In Pharo, left click on the environment background, and select `Browse > Playground` in the menu:
 
