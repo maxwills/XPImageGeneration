@@ -77,7 +77,8 @@ Metacello new
 - We prefer that you avoid interruptions during the experiment. The experiment should last between 1h and 1h30. If you get interrupted, please take note of how much time you were interrupted and report it in the surveys when requested.
 - Since you are going to do program comprehension and debugging tasks, you might perform actions that render the system unstable. If you freeze your Pharo image during the experiment, just quit and restart the image.
 
-## Personal data
+## Personal data
+
 We do not collect automatically any data that would allow for the identification of participants.
 
 We automatically collect technical data (*e.g.*, a breakpoint was hit) that is anonymized, encrypted and transfered to an Inria secured server.
