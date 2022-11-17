@@ -31,7 +31,15 @@ Create a new image:
 
 In the official distribution list, select Pharo 9 (choose 32 or 64bits depending on your system):
 
+![Select P9](https://raw.githubusercontent.com/Pharo-XP-Tools/xp-free-resources/main/ocd/select-p9.png)
+
+Select the newly created image in the list then click "start":
+*missing screenshot*
+
 In Pharo, left click on the environment background, and select `Browse > Playground` in the menu:
+
+![Open playground](https://raw.githubusercontent.com/Pharo-XP-Tools/xp-free-resources/main/ocd/playground.png)
+
 
 Copy paste the lines below, then select it, right-click to open the contextual menu, then select `Do it`:
 
@@ -41,8 +49,10 @@ Metacello new
 	repository: 'github://Pharo-XP-Tools/XPImageGeneration:exp-ocd';
 	load.
 ```
-Select the newly created image in the list then click "start":
-*missing screenshot*
+
+
+![Doit baseline](https://raw.githubusercontent.com/Pharo-XP-Tools/xp-free-resources/main/ocd/baseline.png)
+
 
 ## Starting the experiment
 
