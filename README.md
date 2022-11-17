@@ -7,7 +7,7 @@ We collect anonymous data and surveys that are automatically sent to a server ho
 
 **IMPORTANT: To avoid biasing the results of the experiment, please do not communicate any information about it to someone else.**
 
-To participate to the experiment, **PLEASE FOLLOW WITH GREAT ATTENTION THE INSTRUCTIONS BELOW**.
+**PLEASE FOLLOW WITH GREAT ATTENTION THE INSTRUCTIONS BELOW**.
 
 ## Your participation
 
