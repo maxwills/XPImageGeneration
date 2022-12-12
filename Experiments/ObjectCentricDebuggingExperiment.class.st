@@ -124,14 +124,14 @@ ObjectCentricDebuggingExperiment class >> buildExperiment [
 	surveys add: postTaskSurvey.
 	tasks last survey: postTaskSurvey uuid.
 
-	10 atRandom < 6 ifTrue: [ 
+	"10 atRandom < 6 ifTrue: [ 
 		| firstTask lastTask |
 		firstTask := tasks removeFirst.
 		lastTask := tasks removeLast.
 		firstTask order: lastTask order.
 		lastTask order: 1.
 		tasks addFirst: lastTask.
-		tasks addLast: firstTask ].
+		tasks addLast: firstTask ]."
 	
 	xp := self basicNew.
 	xp tasks: tasks.
