@@ -699,6 +699,11 @@ ObjectCentricDebuggingExperiment >> downloadAndInstallExternalTools [
 	Metacello new
 		baseline: 'BreakpointNavigator';
 		repository: 'github://StevenCostiou/BreakpointNavigator:main';
+		load.
+		
+	Metacello new
+		baseline: 'AmmoliteMagenta';
+		repository: 'github://StevenCostiou/AmmoliteMagenta:main';
 		load
 ]
 
