@@ -124,15 +124,6 @@ ObjectCentricDebuggingExperiment class >> buildExperiment [
 	surveys add: postTaskSurvey.
 	tasks last survey: postTaskSurvey uuid.
 
-	"10 atRandom < 6 ifTrue: [ 
-		| firstTask lastTask |
-		firstTask := tasks removeFirst.
-		lastTask := tasks removeLast.
-		firstTask order: lastTask order.
-		lastTask order: 1.
-		tasks addFirst: lastTask.
-		tasks addLast: firstTask ]."
-	
 	xp := self basicNew.
 	xp tasks: tasks.
 	1 to: surveys size do:[:i| (surveys at: i) order: i]. 
@@ -406,7 +397,7 @@ ObjectCentricDebuggingExperiment class >> buildTasks [
 	
 	task := PhexTask new.
 	task title: 'Program comprehension task'.
-	task requiredAnswer: 'Explain why the number of nodes is incorrect.'.
+	task requiredAnswer: 'Explain why the level marker of the first student named Adèle is not displayed in any group lists.'.
 	task requiresAnswer: true.
 	task description: self task1Source.
 	task contents: task description.
@@ -473,33 +464,33 @@ ObjectCentricDebuggingExperiment class >> initialize [
 { #category : #'building - sources' }
 ObjectCentricDebuggingExperiment class >> task1Source [
 
-	^ '# Program comprehension task
-
-A `MetaLink` is an object that annotates the Abstract Syntax Tree of a program. When the program executes, the annotated AST nodes trigger its metalinks which executes additional behavior.
-
-All-in-all, you can consider that an AST node corresponds to a particular expression in your source code. For example, if you install a metalink object on an instance variable of a class, the metalink will annotate all expressions referring to that instance variable in the source code of this class'' methods. The metalink object holds a set of AST nodes corresponding to these expressions, so that it knows where it is installed in the source code. 
-
-During the metalink installation process, each time a metalink object annotates an AST node (_i.e._, an expression in the source code), this AST node is added to the set of nodes held by the metalink object.
+^'# Program comprehension task
 
 ## The problem
-A developer changed something in the basecode of metalinks and now one test is failing.
-This test (`MetalinkStrangeNodeTest>>#testCollectionContents`, click on it to open) installs a metalink object on an instance variable `instVar` of a class `ReflectivityExamples2`. 
 
-This instance variable is referenced in 4 expressions in the source code of the `ReflectivityExamples2` class. Before our developer modified the code, the metalink''s set would hold 4 AST nodes, one for each source code expression referring to instVar. 
+Ammolite Magenta is a graphical application that can be launched via `AmmoliteMagenta class >> #run` (click on it).
 
-However, the test fails due to the metalink holding an incorrect number of nodes after installation: there is an extra node in the nodes set of the metalink. 
+* Run the application by executing this method (clic on the play button near the method name).
 
-## Your task
-Your task is to understand why the number of nodes has changed in the set that the metalink uses to remember the nodes it is installed on:
-You have to: 
-* Understand the error in the test
-* Explain why the number of nodes is incorrect, i.e., the reason why there is an extra node (where in the source code, and why). 
+You should see the following application:
 
-To help you, we stored the set of nodes held by the metalink in an instance variable in the test. This variable is named nodes.
+![Ammolite](https://raw.githubusercontent.com/Pharo-XP-Tools/xp-free-resources/main/ocd/ammolite.png)
 
-This set is **the same as the one in the metalink object**: the AST nodes in this set are the nodes on which the metalink is installed.
+The app is composed of a top left pane containing a list of student groups which, on selection, will be expanded in the top right pane.
 
-**Beware:** Sets are used everywhere in the system. Attempting to put a breakpoint in a method of the `Set` class might freeze your image.
+Each student has a level marker attributed depending on how they perform during exams. When the level is significantly above average the marker used is "+", when lower, "-" is used, "nil" is used otherwise.
+
+The bottom of the window there is a toolbar allowing to create groups of student with balanced levels.
+After clicking the "generate" button you should see the bottom part updated as following:
+
+![Ammolite groups](https://raw.githubusercontent.com/Pharo-XP-Tools/xp-free-resources/main/ocd/ammolite-groups.png)
+
+However, **there is a bug**, the level marker of the first student named Adèle is not displayed in any group lists.
+
+## Your task
+* Understand why the level marker this student is not displayed in any group lists.
+
+To help you, you can inspect any student in the list by performing a right-click on it. This action will open an inspector on that student.
 '
 ]
 
@@ -778,6 +769,25 @@ ObjectCentricDebuggingExperiment >> logger [
 
 	^ logger ifNil: [ 
 		  logger := (self findClass: #ExperimentLoggerDSSpy) on: self ]
+]
+
+{ #category : #'serialize/materialize' }
+ObjectCentricDebuggingExperiment >> materializeTasks [
+
+	| firstTask lastTask |
+	super materializeTasks.
+
+	"50% of the time, swap 1st and 2nd tasks"
+	10 atRandom < 6 ifFalse: [ ^ self ].
+
+	firstTask := self tasks first.
+	lastTask := self tasks last.
+
+	firstTask order: lastTask order.
+	lastTask order: 1.
+	
+	self tasks reSort.
+	
 ]
 
 { #category : #accessing }
