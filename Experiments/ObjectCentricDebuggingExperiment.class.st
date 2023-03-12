@@ -488,7 +488,7 @@ After clicking the "generate" button you should see the bottom part updated as f
 However, **there is a bug**, the level marker of the first student named Adèle is not displayed in any group lists.
 
 ## Your task
-* Understand why the level marker this student is not displayed in any group lists.
+* Understand why the level marker of this student is not displayed in any group lists.
 
 To help you, you can inspect any student in the list by performing a right-click on it. This action will open an inspector on that student.
 '
@@ -499,32 +499,30 @@ ObjectCentricDebuggingExperiment class >> task2Source [
 ^'# Debugging task
 
 ## The problem
-AtomApp is a small graphical application that can be launched via `AtomApp class >> #run` (click on it).
+LightsOutGame is a small graphical application that can be launched via `LightsOutGame class >> #open` (click on it).
 
 * Run the application by executing this method (clic on the play button near the method name).
 
 You should see the following application:
 
-![AtomApp](https://raw.githubusercontent.com/Pharo-XP-Tools/xp-free-resources/main/ocd/image.png)
+![AtomApp](https://raw.githubusercontent.com/Pharo-XP-Tools/xp-free-resources/main/ocd/lights-out-game.png)
 
-The app is composed of colored squares named atoms. 
-Each time the mouse moves over a square, the color of the square changes.
+In this game, each tile represents a light buld initially switched off. 
+The unique action possible is to click on a tile/light, this will toggle the targeted light and its immediate neighbors as illustrated below.
+To win the game, a player must turn on all the lights in a minimal amount of actions.
 
-* Move your mouse over the squares, and see the behavior.
+![AtomApp](https://raw.githubusercontent.com/Pharo-XP-Tools/xp-free-resources/main/ocd/lights-out-game-toggles.png)
 
-The atoms squares are instances of a class `AtomMorph`.  
-In this class, we redefined the method `AtomMorph>>#handleMouseMove:` so that each time the mouse moves over an atom, we request a color change for that atom.
+Unfortunately, there is a bug. As shown in the screenshot below, when the light bulb located on the 5th column and the 6th row is clicked, the light below is not switched on as expected. 
 
-The color of an atom is changed by modifying it''s instance variable `color` and putting a new color object in that variable. This instance variable is modified, in particular, when sending the `Morph>>#color:` message to atoms objects. 
+![AtomApp](https://raw.githubusercontent.com/Pharo-XP-Tools/xp-free-resources/main/ocd/lights-out-game-bug.png)
 
-However, as you will notice in the provided application and in the animated image above, one of the atoms never changes color when the mouse moves over it. Actually, most atoms do change their color, but it seems that green atoms do not. 
-* Move your mouse over non-green  squares and over green squares.  Repeat it many times and observe the behavior.
-
-**This is a bug:** all atoms should change color when you move the mouse above them.
+In fact, no matter which adjacent tile is clicked, we can never see this light on. 
 
 ## Your task
-* Understand why some green squares do not have the same behavior as other squares
-* Fix the bug, that is, if all atoms change color when moving the mouse over them, then you''ve fixed the bug.
+
+* Understand why this light is never on.
+* Fix the bug, that is, if the light can be switched on, the bug is fixed.
 
 To help you, you can inspect any atom by performing a right-click on it. This action will open an inspector on that atom.
 
@@ -695,6 +693,11 @@ ObjectCentricDebuggingExperiment >> downloadAndInstallExternalTools [
 	Metacello new
 		baseline: 'AmmoliteMagenta';
 		repository: 'github://StevenCostiou/AmmoliteMagenta:main';
+		load.
+
+	Metacello new
+		baseline: 'LightsOutGame';
+		repository: 'github://ValentinBourcier/LightsOutGame:master';
 		load
 ]
 
@@ -718,14 +721,13 @@ ObjectCentricDebuggingExperiment >> downloadAndInstallTasks [
 	|installer|
 	Metacello new
 		baseline: 'OCDEvalTasks';
-		repository: 'github://Pharo-XP-Tools/OCDEval-Tasks:updated-task1';
+		repository: 'github://Pharo-XP-Tools/OCDEval-Tasks';
 		load.
 	installer := (self findClass: #OCDTaskInstaller).
 	installer installTasks.
 	validator := installer buildValidator.
 	"Note that this will remove code. If developing, manually set the experiment development flag to true (ObjectCentricDebuggingExperiment developmentMode: true"
-	ObjectCentricDebuggingExperiment developmentMode ifFalse: [ 
-		(self findClass: #OCDTaskInstaller) removeTaskInstallerSilently ]
+	self class developmentMode ifFalse: [ (self findClass: #OCDTaskInstaller) removeFromSystem ]
 ]
 
 { #category : #accessing }
