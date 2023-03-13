@@ -396,7 +396,7 @@ ObjectCentricDebuggingExperiment class >> buildTasks [
 	tasks := OrderedCollection new.
 	
 	task := PhexTask new.
-	task title: 'Program comprehension task'.
+	task title: 'Ammolite'.
 	task requiredAnswer: 'Explain why the level marker of the first student named Adèle is not displayed in any group lists.'.
 	task requiresAnswer: true.
 	task description: self task1Source.
@@ -414,30 +414,21 @@ ObjectCentricDebuggingExperiment class >> buildTasks [
 	tasks add: task.
 	
 	task := PhexTask new.
-	task title: 'Warmup task 1'.
+	task title: 'Warmup'.
 	task requiredAnswer: 'Explain why the test is failing.'.
 	task requiresAnswer: true.
-	task description: self taskWarmup1Source.
+	task description: self taskWarmupSource.
 	task contents: task description.
 	task order: 3.
 	tasks add: task.
 	
 	task := PhexTask new.
-	task title: 'Warmup task 2'.
-	task requiredAnswer: 'Explain why the test is failing.'.
-	task requiresAnswer: true.
-	task description: self taskWarmup2Source.
-	task contents: task description.
-	task order: 4.
-	tasks add: task.
-	
-	task := PhexTask new.
-	task title: 'Debugging task'.
+	task title: 'Lights Out'.
 	task requiredAnswer: 'Explain the bug and how you fixed it.'.
 	task requiresAnswer: true.
 	task description: self task2Source.
 	task contents: task description.
-	task order: 5.
+	task order: 4.
 	tasks add: task.
 	
 	^tasks
@@ -532,7 +523,7 @@ This action will open an inspector on that tile.
 ]
 
 { #category : #'building - sources' }
-ObjectCentricDebuggingExperiment class >> taskWarmup1Source [
+ObjectCentricDebuggingExperiment class >> taskWarmupSource [
 ^'# Warmup task 1
 
 This task is a warmup to practice the **halt on call** breakpoint.
@@ -542,26 +533,6 @@ Try to understand why by using the **halt on call** breakpoint.
 
 Remember that object-centric operations complements standard debugging tools.
 The purpose of this task is not to restrict you to use only the **halt on call** breakpoint, but to use it when you feel necessary to complement standard debugging tools.
-
-It is possible that you understand why the test fails without using the debugging tools.
-If so, and for training purpose, try to use the object-centric tools to observe what you understood.
-
-For example, from reading the source code you understand that a variable is set to nil into an object and that is the source of the problem.
-Then, try to use the object-centric tools to observe the precise moment in the debugger where that variable is put to nil.
-'
-]
-
-{ #category : #'building - sources' }
-ObjectCentricDebuggingExperiment class >> taskWarmup2Source [
-^'# Warmup task 2
-
-This task is a warmup to practice the **halt on state access** breakpoint.
-
-The test `OCDPersonRegistryTest>>#testPersonsAge` is failing. 
-Try to understand why by using the **halt on state access** breakpoint.
-
-Remember that object-centric operations complements standard debugging tools.
-The purpose of this task is not to restrict you to use only the **halt on state access** breakpoint, but to use it when you feel necessary to complement standard debugging tools.
 
 It is possible that you understand why the test fails without using the debugging tools.
 If so, and for training purpose, try to use the object-centric tools to observe what you understood.
