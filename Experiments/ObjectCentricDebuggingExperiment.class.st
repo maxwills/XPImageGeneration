@@ -752,7 +752,7 @@ ObjectCentricDebuggingExperiment >> materializeTasks [
 	super materializeTasks.
 
 	"50% of the time, swap 1st and 2nd tasks"
-	10 atRandom < 6 ifFalse: [ ^ self ].
+	Random new next < 0.5 ifFalse: [ ^ self ].
 
 	firstTask := self tasks first.
 	lastTask := self tasks last.
