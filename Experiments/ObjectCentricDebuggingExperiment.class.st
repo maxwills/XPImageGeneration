@@ -346,7 +346,7 @@ ObjectCentricDebuggingExperiment class >> buildPostTaskSurvey [
 
 	survey addQuestion: (self
 			 singleChoiceQuestion:
-			 'If you found the bug, how much the debugger helped to discover the bug?'
+			 'If you found the bug, how much the debugger helped discover the bug?'
 			 options:
 			 #( 'Not at all' 'Slightly' 'Moderately' 'Normally' 'Extremely' )).
 
