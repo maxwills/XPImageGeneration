@@ -499,24 +499,24 @@ You should see the following application:
 ![Lights out game](https://raw.githubusercontent.com/Pharo-XP-Tools/xp-free-resources/main/ocd/lights-out-game.png)
 
 In this game, each tile represents a light buld initially switched off. 
-The unique action possible is to click on a tile/light, this will toggle the targeted light and its immediate neighbors as illustrated below.
+The unique action possible is to click on a tile/light. 
+This will toggle the targeted light and its immediate neighbors as illustrated below.
 To win the game, a player must turn on all the lights in a minimal amount of actions.
 
 ![Lights out game, toggled tiles](https://raw.githubusercontent.com/Pharo-XP-Tools/xp-free-resources/main/ocd/lights-out-game-toggles.png)
 
-Unfortunately, there is a bug. As shown in the screenshot below, when the light bulb located on the 5th column and the 6th row is clicked, the light below is not switched on as expected. 
+Unfortunately, there is a bug. As shown in the screenshot below, one light bulb located at one of the corners cannot be switched on. 
 
 ![Lights out game, bug](https://raw.githubusercontent.com/Pharo-XP-Tools/xp-free-resources/main/ocd/lights-out-game-bug.png)
 
-In fact, no matter which adjacent tile is clicked, we can never see this light on. 
+Each time the game is launched, the bug appears in a new corner.
 
 ## Your task
 
-* Understand why this light is never on.
+* Understand why there is a light that cannot be switched.
 * Fix the bug, that is, if the light can be switched on, the bug is fixed.
 
-To help you, you can inspect any tile/light using the shortcut Ctrl + Shift + Option and by clicking on "inspect". 
-This action will open an inspector on that tile.
+To help you, you can inspect any tile/light using the shortcut Ctrl + Shift + Option and by clicking on "inspect". This action will open an inspector on that tile.
 
 **Beware:** this is a graphical application, and putting breakpoints in the display system (e.g., in the Morph class) might freeze your system.
 '
