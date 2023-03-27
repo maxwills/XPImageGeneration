@@ -560,6 +560,11 @@ Then, try to use the object-centric tools to observe the precise moment in the d
 { #category : #'building - sources' }
 ObjectCentricDebuggingExperiment class >> tutorialTaskSource [
 ^'# Tutorial
+
+This tutorial contains 2 guided exercises.
+Estimated time: 10 minutes.
+Difficulty: easy.
+
 ## Context: the OCDBox objects loop
 In this example, we will use a class named `OCDBox`. It models a box that holds objects. It has two instance variables, `elements` and `name`, and a few methods in its API. In particular, the method `OCDBox>>#addElement:` (click on it) adds an object into a box.
 
@@ -651,10 +656,7 @@ When you select a breakpoint, you see the list of methods affected by that break
 When you select one of these methods, you see the source code of that method with, highlighted, all the locations in the source code where or when the breakpoint will interrupt the execution.
 
 **From the inspector**
-Removing a breakpoint from the inspector is straightforward. Just inspect the object on which you installed a breakpoint.  Go into the breakpoint pane: you can control breakpoints from there in the same manner as in the breakpoint navigator.
-
-### Exercise 3
-Do again exercise 1 and 2, but this time experiment breakpoint enabling/disabling and uninstalling through the breakpoint navigator and through the breakpoint pane when you inspect objects.'
+Removing a breakpoint from the inspector is straightforward. Just inspect the object on which you installed a breakpoint.  Go into the breakpoint pane: you can control breakpoints from there in the same manner as in the breakpoint navigator.'
 ]
 
 { #category : #accessing }
