@@ -11,6 +11,50 @@ Class {
 	#category : #'Experiments-OCDbg'
 }
 
+{ #category : #'building - sources' }
+ObjectCentricDebuggingExperiment class >> ammoliteSource [
+
+^'# Ammolite
+
+## The application
+
+Ammolite Magenta is a graphical application that can be launched via `AmmoliteMagenta class >> #run` (click on it).
+
+* Run the application by executing this method (clic on the play button near the method name).
+
+You should see the following application:
+
+![Ammolite](https://raw.githubusercontent.com/Pharo-XP-Tools/xp-free-resources/main/ocd/ammolite.png)
+
+It purpose is to create well balanced groups of students from a promotion, depending on their level.
+
+To represent the level, each student has a marker depending on how they perform during exams compared to average :
+- + when the level is above
+- - when the level is lower
+- "nil" otherwise.
+
+To create groups, the user only has to select a promotion and click onto the "generate" button.
+The app the shows the result:
+
+![Ammolite groups](https://raw.githubusercontent.com/Pharo-XP-Tools/xp-free-resources/main/ocd/ammolite-groups.png)
+
+## The Problem
+
+There is three student named Adèle with a + marker. However, for one of them, the marker is not printed in group lists.
+
+![Ammolite groups](https://raw.githubusercontent.com/Pharo-XP-Tools/xp-free-resources/main/ocd/ammolite-groups-bug.png)
+
+Only the last Adèle in the list of student produces such behavior.
+
+## Your task
+
+1. Understand why the level marker of this student is not printed in group lists.
+2. Fix the bug. Identify the method reponsible for this behavior and fix the correct instruction.
+
+To help you, you can inspect any student in the list by performing a right-click on it. This action will open an inspector on that student.
+'
+]
+
 { #category : #building }
 ObjectCentricDebuggingExperiment class >> buildContactAndCommentSurvey [
 
@@ -399,7 +443,7 @@ ObjectCentricDebuggingExperiment class >> buildTasks [
 	task title: 'Ammolite'.
 	task requiredAnswer: 'Explain why the level marker of the first student named Adèle is not displayed in any group lists.'.
 	task requiresAnswer: true.
-	task description: self task1Source.
+	task description: self ammoliteSource.
 	task contents: task description.
 	task order: 1.
 	tasks add: task.
@@ -408,7 +452,7 @@ ObjectCentricDebuggingExperiment class >> buildTasks [
 	task title: 'Tutorial'.
 	task requiredAnswer: 'No answer to provide: click "ok" to continue'.
 	task requiresAnswer: false.
-	task description: self tutorialTaskSource.
+	task description: self tutorialSource.
 	task contents: task description.
 	task order: 2.
 	tasks add: task.
@@ -417,7 +461,7 @@ ObjectCentricDebuggingExperiment class >> buildTasks [
 	task title: 'Warmup'.
 	task requiredAnswer: 'Explain why the test is failing.'.
 	task requiresAnswer: true.
-	task description: self taskWarmupSource.
+	task description: self warmupSource.
 	task contents: task description.
 	task order: 3.
 	tasks add: task.
@@ -426,7 +470,7 @@ ObjectCentricDebuggingExperiment class >> buildTasks [
 	task title: 'Lights Out'.
 	task requiredAnswer: 'Explain the bug and how you fixed it.'.
 	task requiresAnswer: true.
-	task description: self task2Source.
+	task description: self lightsOutSource.
 	task contents: task description.
 	task order: 4.
 	tasks add: task.
@@ -453,43 +497,11 @@ ObjectCentricDebuggingExperiment class >> initialize [
 ]
 
 { #category : #'building - sources' }
-ObjectCentricDebuggingExperiment class >> task1Source [
+ObjectCentricDebuggingExperiment class >> lightsOutSource [
+^'# Lights Out game 
 
-^'# Program comprehension task
+## The application
 
-## The problem
-
-Ammolite Magenta is a graphical application that can be launched via `AmmoliteMagenta class >> #run` (click on it).
-
-* Run the application by executing this method (clic on the play button near the method name).
-
-You should see the following application:
-
-![Ammolite](https://raw.githubusercontent.com/Pharo-XP-Tools/xp-free-resources/main/ocd/ammolite.png)
-
-The app is composed of a top left pane containing a list of student groups which, on selection, will be expanded in the top right pane.
-
-Each student has a level marker attributed depending on how they perform during exams. When the level is significantly above average the marker used is "+", when lower, "-" is used, "nil" is used otherwise.
-
-The bottom of the window there is a toolbar allowing to create groups of student with balanced levels.
-After clicking the "generate" button you should see the bottom part updated as following:
-
-![Ammolite groups](https://raw.githubusercontent.com/Pharo-XP-Tools/xp-free-resources/main/ocd/ammolite-groups.png)
-
-However, **there is a bug**, the level marker of the first student named Adèle is not displayed in any group lists.
-
-## Your task
-* Understand why the level marker of this student is not displayed in any group lists.
-
-To help you, you can inspect any student in the list by performing a right-click on it. This action will open an inspector on that student.
-'
-]
-
-{ #category : #'building - sources' }
-ObjectCentricDebuggingExperiment class >> task2Source [
-^'# Debugging task
-
-## The problem
 LightsOutGame is a small graphical application that can be launched via `LightsOutGame class >> #open` (click on it).
 
 * Run the application by executing this method (clic on the play button near the method name).
@@ -499,11 +511,13 @@ You should see the following application:
 ![Lights out game](https://raw.githubusercontent.com/Pharo-XP-Tools/xp-free-resources/main/ocd/lights-out-game.png)
 
 In this game, each tile represents a light buld initially switched off. 
-The unique action possible is to click on a tile/light. 
-This will toggle the targeted light and its immediate neighbors as illustrated below.
-To win the game, a player must turn on all the lights in a minimal amount of actions.
+Clicking on a tile will toggle it and its immediate neighbors as illustrated below.
 
 ![Lights out game, toggled tiles](https://raw.githubusercontent.com/Pharo-XP-Tools/xp-free-resources/main/ocd/lights-out-game-toggles.png)
+
+To win the game, a player must turn on all the lights in a minimal amount of actions.
+
+## The problem
 
 Unfortunately, there is a bug. As shown in the screenshot below, one light bulb located at one of the corners cannot be switched on. 
 
@@ -514,51 +528,16 @@ Each time the game is launched, the bug appears in a new corner.
 ## Your task
 
 * Understand why there is a light that cannot be switched.
-* Fix the bug, that is, if the light can be switched on, the bug is fixed.
+* Fix the bug. Identify and delete the method responsible for this behavior.
 
-To help you, you can inspect any tile/light using the shortcut Ctrl + Shift + Option and by clicking on "inspect". This action will open an inspector on that tile.
+To help you, you can inspect any tile/light by performing a right-click on it. This action will open an inspector on that tile/light.
 
 **Beware:** this is a graphical application, and putting breakpoints in the display system (e.g., in the Morph class) might freeze your system.
 '
 ]
 
 { #category : #'building - sources' }
-ObjectCentricDebuggingExperiment class >> taskWarmupSource [
-^'# Warmup task 1
-
-This task is a warmup to practice the **halt on call** breakpoint.
-
-The test `OCDPersonRegistryTest>>#testRegisterPersons` is failing. 
-Try to understand why by using the **halt on call** breakpoint.
-
-Remember that object-centric operations complements standard debugging tools.
-The purpose of this task is not to restrict you to use only the **halt on call** breakpoint, but to use it when you feel necessary to complement standard debugging tools.
-
-It is possible that you understand why the test fails without using the debugging tools.
-If so, and for training purpose, try to use the object-centric tools to observe what you understood.
-
-For example, from reading the source code you understand that a variable is set to nil into an object and that is the source of the problem. Then, try to use the object-centric tools to observe the precise moment in the debugger where that variable is put to nil.
-
-# Warmup task 2
-
-This task is a warmup to practice the **halt on state access** breakpoint.
-
-The test `OCDPersonRegistryTest>>#testPersonsAge` is failing. 
-Try to understand why by using the **halt on state access** breakpoint.
-
-Remember that object-centric operations complements standard debugging tools.
-The purpose of this task is not to restrict you to use only the **halt on state access** breakpoint, but to use it when you feel necessary to complement standard debugging tools.
-
-It is possible that you understand why the test fails without using the debugging tools.
-If so, and for training purpose, try to use the object-centric tools to observe what you understood.
-
-For example, from reading the source code you understand that a variable is set to nil into an object and that is the source of the problem.
-Then, try to use the object-centric tools to observe the precise moment in the debugger where that variable is put to nil.
-'
-]
-
-{ #category : #'building - sources' }
-ObjectCentricDebuggingExperiment class >> tutorialTaskSource [
+ObjectCentricDebuggingExperiment class >> tutorialSource [
 ^'# Tutorial
 
 This tutorial contains 2 guided exercises.
@@ -657,6 +636,41 @@ When you select one of these methods, you see the source code of that method wit
 
 **From the inspector**
 Removing a breakpoint from the inspector is straightforward. Just inspect the object on which you installed a breakpoint.  Go into the breakpoint pane: you can control breakpoints from there in the same manner as in the breakpoint navigator.'
+]
+
+{ #category : #'building - sources' }
+ObjectCentricDebuggingExperiment class >> warmupSource [
+^'# Warmup task 1
+
+This task is a warmup to practice the **halt on call** breakpoint.
+
+The test `OCDPersonRegistryTest>>#testRegisterPersons` is failing. 
+Try to understand why by using the **halt on call** breakpoint.
+
+Remember that object-centric operations complements standard debugging tools.
+The purpose of this task is not to restrict you to use only the **halt on call** breakpoint, but to use it when you feel necessary to complement standard debugging tools.
+
+It is possible that you understand why the test fails without using the debugging tools.
+If so, and for training purpose, try to use the object-centric tools to observe what you understood.
+
+For example, from reading the source code you understand that a variable is set to nil into an object and that is the source of the problem. Then, try to use the object-centric tools to observe the precise moment in the debugger where that variable is put to nil.
+
+# Warmup task 2
+
+This task is a warmup to practice the **halt on state access** breakpoint.
+
+The test `OCDPersonRegistryTest>>#testPersonsAge` is failing. 
+Try to understand why by using the **halt on state access** breakpoint.
+
+Remember that object-centric operations complements standard debugging tools.
+The purpose of this task is not to restrict you to use only the **halt on state access** breakpoint, but to use it when you feel necessary to complement standard debugging tools.
+
+It is possible that you understand why the test fails without using the debugging tools.
+If so, and for training purpose, try to use the object-centric tools to observe what you understood.
+
+For example, from reading the source code you understand that a variable is set to nil into an object and that is the source of the problem.
+Then, try to use the object-centric tools to observe the precise moment in the debugger where that variable is put to nil.
+'
 ]
 
 { #category : #accessing }
