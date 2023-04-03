@@ -26,25 +26,25 @@ You should see the following application:
 
 ![Ammolite](https://raw.githubusercontent.com/Pharo-XP-Tools/xp-free-resources/main/ocd/ammolite.png)
 
-It purpose is to create well balanced groups of students from a promotion, depending on their level.
+Its purpose is to create from a class/promotion, well balanced groups of students depending on their levels.
 
 To represent the level, each student has a marker depending on how they perform during exams compared to average :
-- + when the level is above
-- - when the level is lower
-- "nil" otherwise.
+- "+" when the level is above
+- "-" when the level is lower
+- nil otherwise.
 
-To create groups, the user only has to select a promotion and click onto the "generate" button.
+To create groups, the user has to select a class/promotion and click onto the "generate" button.
 The app the shows the result:
 
 ![Ammolite groups](https://raw.githubusercontent.com/Pharo-XP-Tools/xp-free-resources/main/ocd/ammolite-groups.png)
 
 ## The Problem
 
-There is three student named Adèle with a + marker. However, for one of them, the marker is not printed in group lists.
+There is three student named Adèle with a "+" marker. However, for one of them, the marker is not printed in group lists.
 
-![Ammolite groups](https://raw.githubusercontent.com/Pharo-XP-Tools/xp-free-resources/main/ocd/ammolite-groups-bug.png)
+![Ammolite groups bug](https://raw.githubusercontent.com/Pharo-XP-Tools/xp-free-resources/main/ocd/ammolite-groups-bug.png)
 
-Only the last Adèle in the list of student produces such behavior.
+Only the last Adèle in the list of students produces such behavior.
 
 ## Your task
 
@@ -510,12 +510,12 @@ You should see the following application:
 
 ![Lights out game](https://raw.githubusercontent.com/Pharo-XP-Tools/xp-free-resources/main/ocd/lights-out-game.png)
 
-In this game, each tile represents a light buld initially switched off. 
-Clicking on a tile will toggle it and its immediate neighbors as illustrated below.
+In this game, each tile represents a light bulb initially switched off. 
+Clicking on a tile will toggle it and its immediate neighbors, as illustrated below.
 
 ![Lights out game, toggled tiles](https://raw.githubusercontent.com/Pharo-XP-Tools/xp-free-resources/main/ocd/lights-out-game-toggles.png)
 
-To win the game, a player must turn on all the lights in a minimal amount of actions.
+To win the game, a player must switch on all the lights in a minimal amount of actions.
 
 ## The problem
 
@@ -527,7 +527,7 @@ Each time the game is launched, the bug appears in a new corner.
 
 ## Your task
 
-* Understand why there is a light that cannot be switched.
+* Understand why there is a light that cannot be switched on.
 * Fix the bug. Identify and delete the method responsible for this behavior.
 
 To help you, you can inspect any tile/light by performing a right-click on it. This action will open an inspector on that tile/light.
