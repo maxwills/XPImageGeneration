@@ -441,7 +441,7 @@ ObjectCentricDebuggingExperiment class >> buildTasks [
 	
 	task := PhexTask new.
 	task title: 'Ammolite'.
-	task requiredAnswer: 'Explain why the level marker of the first student named Adèle is not displayed in any group lists.'.
+	task requiredAnswer: 'Explain why the level marker of the last student named Adèle is not displayed in group lists, and how you fixed that.'.
 	task requiresAnswer: true.
 	task description: self ammoliteSource.
 	task contents: task description.
@@ -468,7 +468,7 @@ ObjectCentricDebuggingExperiment class >> buildTasks [
 	
 	task := PhexTask new.
 	task title: 'Lights Out'.
-	task requiredAnswer: 'Explain the bug and how you fixed it.'.
+	task requiredAnswer: 'Explain why one of the corner switches cannot be switched on, and how you fixed that.'.
 	task requiresAnswer: true.
 	task description: self lightsOutSource.
 	task contents: task description.
