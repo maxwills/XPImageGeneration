@@ -565,6 +565,9 @@ This tutorial contains 2 guided exercises.
 Estimated time: 10 minutes.
 Difficulty: easy.
 
+A 3 minutes introduction video is available here: https://kloum.io/costiou/ocb-ins.mov
+First, watch the video then start the tutorial.
+
 ## Context: the OCDBox objects loop
 In this example, we will use a class named `OCDBox`. It models a box that holds objects. It has two instance variables, `elements` and `name`, and a few methods in its API. In particular, the method `OCDBox>>#addElement:` (click on it) adds an object into a box.
 
@@ -587,6 +590,8 @@ If you look at the code of the OCDBox class, you will see that:
 The typical scenario for `haltOnCall` is when you have many instances of the same class running in your program, and you want to debug a specific method for one specific instance. You are interested to answer the following question: _When is this particular object executing this particular method?_ 
 
 ### Exercise 1
+
+If you have trouble performing this exercise, you can find it realized in a 3 minutes video there: https://kloum.io/costiou/hac-vid.mov
 
 The `OCDBoxTest>>#testMultipleBoxes` test iterates over 100 box objects, and to each box it sends the  `#addElement:` message. In this exercise, we select one box among all the iterated boxes, and we install a `haltOnCall` breakpoint on the `OCDBox>>#addElement:` method of that box. Then, we proceed the test and the  `#addElement:` message is sent to each of the boxes. The execution breaks only when the selected box executes the `OCDBox>>#addElement:` method.
 
@@ -615,6 +620,8 @@ The test continues and  iterates over the hundred boxes, and sends the addElemen
 The typical scenario for this breakpoint is when you have many instances of the same class running in your program, while you are interested to know when the state of one specific object is modified. You are interested to answer the following question: _When and how is the state of this particular object modified?_
 
 ### Exercise 2
+
+If you have trouble performing this exercise, you can find it realized in a 3 minutes video there: https://kloum.io/costiou/haw-vid.mov
 
 In this exercise, we reuse our test iterating over a hundred box objects. We select again a box among all the iterated boxes, but this time we want to stop when the `name` instance variable of that box is written to. To that end, we install an object-centric breakpoint on all write accesses to that variable in the selected object. Then, we proceed the test and the execution only breaks when the name instance variable of the selected box is modified.
 
