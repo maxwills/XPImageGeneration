@@ -75,7 +75,10 @@ ExperimentLoggerDSSpy >> initialize [
 	concreteLogger projectName: experiment experienceId.
 	concreteLogger participantUUID: experiment generateParticipantUUID.
 	DSSpy logger: concreteLogger.
-	DSSpy monitorPackageForSourceCodeChanges: {'OCD-Tasks'. 'Reflectivity' } 
+	"DSSpy monitorPackageForSourceCodeChanges: {'OCD-Tasks'. 'Reflectivity' }."
+	DSSpy scopeSourceCodeChangesRecording: false.
+	DSSpy recordClipboardContent: true.
+	DSSpy recordSourceCode: true. 
 	
 	
 ]
