@@ -48,7 +48,7 @@ In Pharo, left click on the environment background, and select `Browse > Playgro
 ![Open playground](https://raw.githubusercontent.com/Pharo-XP-Tools/xp-free-resources/main/ocd/playground.png)
 
 
-Copy paste the lines below, then select it, right-click to open the contextual menu, then select `Do it`:
+Copy paste the following lines in the Playground, then select them, right-click to open the contextual menu, then select `Do it`:
 
 ```Smalltalk
 Metacello new
