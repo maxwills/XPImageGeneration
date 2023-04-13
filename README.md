@@ -12,7 +12,7 @@ We collect anonymous data and surveys that are automatically sent to a server ho
 ## Your participation
 
 If at any point you decide to stop the experiment, just quit the Pharo development environment.
-Because your data will be uncomplete, it will be deleted during the data processing phase.
+Because your data will be incomplete, it will be deleted during the data processing phase.
 
 When you complete the experiment to the end, the development environment automatically closes.
 After that point, because your session is over and your data is anonymized, we won't be able to cancel your participation as it will be impossible to find which data is yours.
