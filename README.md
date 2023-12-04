@@ -65,6 +65,10 @@ Metacello new
 
 ![Doit baseline](https://raw.githubusercontent.com/Pharo-XP-Tools/xp-free-resources/main/ocd/baseline.png)
 
+On Windows 11 there is sometimes a `Path too long` when cloning a git repository.
+If that happens, you can try to enable support for long paths (for example, see https://helpdeskgeek.com/windows-11/how-to-fix-the-path-too-long-error-on-windows/).
+If it does not work you cannot do the experiment, or you have to use another system (such as Linux).
+
 # Instructions
 ## Starting the experiment
 
