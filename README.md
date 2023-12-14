@@ -9,6 +9,13 @@ We collect anonymous data and surveys that are automatically sent to a server ho
 
 **PLEASE FOLLOW WITH GREAT ATTENTION THE INSTRUCTIONS BELOW**.
 
+### Errata
+Important typos or misleading information made their way into explanations within the experiment.
+Please read carefully:
+* In some places it is said that a given task might take 10 minutes, or that the experiment might take 40 minutes. Overall, the entire experiment should take between 40 minutes and 2 hours. You have the right to stop the experiment whenever you decide.
+* At the end of the experiment, it is asked if you agree to the publication of the data. The concerned data is only the anonymous technical data (e.g., how many debugger steps you did) and not your email if you decide to provide it for future interviews (see the end of these instructions).
+* If in a survey immediately following a task we ask you what you think about "the tool", it concerns "the tool" that you used in the task. If we asked you to used the normal debugger, it is the normal debugger. And so on.
+
 ## Your participation
 
 If at any point you decide to stop the experiment, just quit the Pharo development environment.
