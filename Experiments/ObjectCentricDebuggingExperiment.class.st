@@ -794,7 +794,16 @@ ObjectCentricDebuggingExperiment >> logger [
 { #category : #'serialize/materialize' }
 ObjectCentricDebuggingExperiment >> materializeTasks [
 
-	| firstTask lastTask |
+	| firstTask lastTask taskOrder |
+	taskOrder := (UIManager default
+		              confirm:
+		              'How much experience do you have with software development?'
+		              trueChoice:
+		              'Less' asText allBold , ' than 3 years' asText
+		              falseChoice:
+		              'More' asText allBold , ' than 3 years' asText)
+		             ifTrue: [ 1 ]
+		             ifFalse: [ 0 ].
 	super materializeTasks.
 	"
 		The image is built with Ammolite in control and Lights Out in treatment. 
@@ -806,15 +815,14 @@ ObjectCentricDebuggingExperiment >> materializeTasks [
 	"
 	tasksOrder = 0 ifTrue: [ ^ self ].
 	tasksOrder < 0 ifTrue: [ Random new next < 0.5 ifFalse: [ ^ self ] ].
-	
+
 	firstTask := self tasks first.
 	lastTask := self tasks last.
 
 	firstTask order: lastTask order.
 	lastTask order: 1.
-	
-	self tasks reSort.
-	
+
+	self tasks reSort
 ]
 
 { #category : #accessing }
