@@ -794,8 +794,8 @@ ObjectCentricDebuggingExperiment >> logger [
 { #category : #'serialize/materialize' }
 ObjectCentricDebuggingExperiment >> materializeTasks [
 
-	| firstTask lastTask taskOrder |
-	taskOrder := (UIManager default
+	| firstTask lastTask |
+	tasksOrder := (UIManager default
 		              confirm:
 		              'How much experience do you have with software development?'
 		              trueChoice:
