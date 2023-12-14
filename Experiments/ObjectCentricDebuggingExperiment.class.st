@@ -797,7 +797,7 @@ ObjectCentricDebuggingExperiment >> materializeTasks [
 	| firstTask lastTask |
 	tasksOrder := (UIManager default
 		              confirm:
-		              'How much experience do you have with software development?'
+		              'How much experience do you have with Pharo, Smalltalk or software development?'
 		              trueChoice:
 		              'Less' asText allBold , ' than 3 years' asText
 		              falseChoice:
