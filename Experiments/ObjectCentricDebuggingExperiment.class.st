@@ -3,7 +3,8 @@ Class {
 	#superclass : #DefaultGithubBasedExperiment,
 	#instVars : [
 		'validator',
-		'participantUUID'
+		'participantUUID',
+		'tasksOrder'
 	],
 	#classVars : [
 		'DevelopmentMode'
@@ -770,6 +771,19 @@ ObjectCentricDebuggingExperiment >> generateParticipantUUID [
 		  participantUUID := str contents ]
 ]
 
+{ #category : #initialization }
+ObjectCentricDebuggingExperiment >> initialize [ 
+
+	super initialize.
+	
+	"
+		-1 : Random
+		 0 : Ammolite in control
+		 1 : Lights Out in control.
+	"
+	tasksOrder := -1 
+]
+
 { #category : #accessing }
 ObjectCentricDebuggingExperiment >> logger [
 
@@ -782,10 +796,17 @@ ObjectCentricDebuggingExperiment >> materializeTasks [
 
 	| firstTask lastTask |
 	super materializeTasks.
-
-	"50% of the time, swap 1st and 2nd tasks"
-	Random new next < 0.5 ifFalse: [ ^ self ].
-
+	"
+		The image is built with Ammolite in control and Lights Out in treatment. 
+		See class side buildTasks.
+	
+     -1 => Random
+		0 => Ammolite in control (first task)
+		1 => Lights out in control (first task)
+	"
+	tasksOrder = 0 ifTrue: [ ^ self ].
+	tasksOrder < 0 ifTrue: [ Random new next < 0.5 ifFalse: [ ^ self ] ].
+	
 	firstTask := self tasks first.
 	lastTask := self tasks last.
 
@@ -832,6 +853,17 @@ ObjectCentricDebuggingExperiment >> startTask: aTask [
 	aTask order = 1 ifFalse:[^self].
 	
 	XPImageGeneration deactivateObjectCentricDebugging
+]
+
+{ #category : #accessing }
+ObjectCentricDebuggingExperiment >> tasksOrder: aZeroForAmmoliteInControlOneOtherwise [
+	"
+		I define the order of the tasks in the experiment.
+		  -1 => Random
+			0 => Ammolite in control (last task)
+			1 => Lights out in control (last task)
+	"
+	tasksOrder := aZeroForAmmoliteInControlOneOtherwise
 ]
 
 { #category : #actions }
