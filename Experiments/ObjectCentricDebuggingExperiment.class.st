@@ -794,17 +794,16 @@ ObjectCentricDebuggingExperiment >> logger [
 { #category : #'serialize/materialize' }
 ObjectCentricDebuggingExperiment >> materializeTasks [
 
-	| firstTask lastTask |
-	tasksOrder := (UIManager default
-		              confirm:
-		              'How much experience do you have with Pharo, Smalltalk or software development?'
-		              trueChoice:
-		              'Less' asText allBold , ' than 3 years' asText
-		              falseChoice:
-		              'More' asText allBold , ' than 3 years' asText)
-		             ifTrue: [ 1 ]
-		             ifFalse: [ 0 ].
+	| developerExperience firstTask lastTask |
+	developerExperience := self requestParticipantExperience.
+
+	tasksOrder := (#( '< 1 year' '1-2 years' ) includes:
+		               developerExperience)
+		              ifTrue: [ 1 ]
+		              ifFalse: [ 0 ].
 	super materializeTasks.
+	tasks first addMetadata: developerExperience atKey: #participantXP.
+	tasks last addMetadata: developerExperience atKey: #participantXP.
 	"
 		The image is built with Ammolite in control and Lights Out in treatment. 
 		See class side buildTasks.
@@ -847,6 +846,20 @@ A: Control. Its difficult to selectively modify what happens between a baseline 
 		ObjectCentricDebuggingExperiment developmentMode ifFalse: [ 
 			self class compile: 'downloadAndInstallTasks
 		^self' ] ]
+]
+
+{ #category : #'serialize/materialize' }
+ObjectCentricDebuggingExperiment >> requestParticipantExperience [
+
+	| questionPresenter |
+	questionPresenter := PhexQuestionRequestPresenter
+		                     question:
+		                     'How much experience in years do you have with Pharo, Smalltalk or software development?'
+		                     choices:
+		                     #( '< 1 year' '1-2 years' '3-5 years'
+		                        '6-10 years' '> 10 years' ).
+	questionPresenter openModalWithSpec.
+	^ questionPresenter selectedChoice
 ]
 
 { #category : #testing }
