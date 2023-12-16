@@ -858,7 +858,7 @@ ObjectCentricDebuggingExperiment >> requestParticipantExperience [
 	questionPresenter questionText:
 		'How much experience in years do you have with Pharo, Smalltalk or software development?'.
 	questionPresenter openModalWithSpec.
-	^ questionPresenter selectedChoice
+	^ questionPresenter selectedChoice 
 ]
 
 { #category : #testing }
