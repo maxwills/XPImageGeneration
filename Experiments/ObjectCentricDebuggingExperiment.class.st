@@ -802,6 +802,8 @@ ObjectCentricDebuggingExperiment >> materializeTasks [
 		              ifTrue: [ 1 ]
 		              ifFalse: [ 0 ].
 	super materializeTasks.
+	tasks first addMetadata: developerExperience atKey: #participantXP.
+	tasks last addMetadata: developerExperience atKey: #participantXP.
 	"
 		The image is built with Ammolite in control and Lights Out in treatment. 
 		See class side buildTasks.
