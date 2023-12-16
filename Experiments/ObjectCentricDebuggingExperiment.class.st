@@ -857,7 +857,7 @@ ObjectCentricDebuggingExperiment >> requestParticipantExperience [
 		                        '6-10 years' '> 10 years' ).
 	questionPresenter questionText:
 		'How much experience in years do you have with Pharo, Smalltalk or software development?'.
-	questionPresenter openModal.
+	questionPresenter openModalWithSpec.
 	^ questionPresenter selectedChoice
 ]
 
