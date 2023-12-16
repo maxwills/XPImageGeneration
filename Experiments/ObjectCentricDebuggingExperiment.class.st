@@ -852,13 +852,14 @@ A: Control. Its difficult to selectively modify what happens between a baseline 
 ObjectCentricDebuggingExperiment >> requestParticipantExperience [
 
 	| questionPresenter |
-	questionPresenter := PhexQuestionRequestPresenter on:
+	questionPresenter := PhexQuestionRequestPresenter
+		                     question:
+		                     'How much experience in years do you have with Pharo, Smalltalk or software development?'
+		                     choices:
 		                     #( '< 1 year' '1-2 years' '3-5 years'
 		                        '6-10 years' '> 10 years' ).
-	questionPresenter questionText:
-		'How much experience in years do you have with Pharo, Smalltalk or software development?'.
 	questionPresenter openModalWithSpec.
-	^ questionPresenter selectedChoice 
+	^ questionPresenter selectedChoice
 ]
 
 { #category : #testing }
