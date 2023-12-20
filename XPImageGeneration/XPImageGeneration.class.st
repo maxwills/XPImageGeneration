@@ -140,7 +140,8 @@ XPImageGeneration class >> loadBaselines [
 
 	Metacello new
 		baseline: 'Phex';
-		repository: 'github://Pharo-XP-Tools/Phex:main';
+		repository:
+			'github://Pharo-XP-Tools/Phex:mandatory-demographic-survey';
 		onWarning: [ :ex | ex resume ];
 		load
 ]
