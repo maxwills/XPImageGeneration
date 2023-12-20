@@ -765,7 +765,7 @@ ObjectCentricDebuggingExperiment >> generateParticipantUUID [
 	^ participantUUID ifNil: [ 
 		  | str |
 		  str := WriteStream on: String new.
-		  str << 'User-'.
+		  str << 'User-TEST-'.
 		  str << UUID new asString.
 		  str << DateAndTime now asNanoSeconds printString.
 		  participantUUID := str contents ]
