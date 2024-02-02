@@ -794,16 +794,16 @@ ObjectCentricDebuggingExperiment >> logger [
 { #category : #'serialize/materialize' }
 ObjectCentricDebuggingExperiment >> materializeTasks [
 
-	| developerExperience firstTask lastTask |
-	developerExperience := self requestParticipantExperience.
+	| "developerExperience" firstTask lastTask |
+"	developerExperience := self requestParticipantExperience.
 
 	tasksOrder := (#( '< 1 year' '1-2 years' ) includes:
 		               developerExperience)
 		              ifTrue: [ 1 ]
-		              ifFalse: [ 0 ].
+		              ifFalse: [ 0 ]."
 	super materializeTasks.
-	tasks first addMetadata: developerExperience atKey: #participantXP.
-	tasks last addMetadata: developerExperience atKey: #participantXP.
+"	tasks first addMetadata: developerExperience atKey: #participantXP.
+	tasks last addMetadata: developerExperience atKey: #participantXP."
 	"
 		The image is built with Ammolite in control and Lights Out in treatment. 
 		See class side buildTasks.
@@ -812,6 +812,7 @@ ObjectCentricDebuggingExperiment >> materializeTasks [
 		0 => Ammolite in control (first task)
 		1 => Lights out in control (first task)
 	"
+	tasksOrder := -1.
 	tasksOrder = 0 ifTrue: [ ^ self ].
 	tasksOrder < 0 ifTrue: [ Random new next < 0.5 ifFalse: [ ^ self ] ].
 
