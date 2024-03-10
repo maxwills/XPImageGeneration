@@ -16,7 +16,15 @@ Please read carefully:
 * In some places it is said that a given task might take 10 minutes, or that the experiment might take 40 minutes. Overall, the entire experiment should take between 40 minutes and 2 hours. You have the right to stop the experiment whenever you decide.
 * At the end of the experiment, it is asked if you agree to the publication of the data. The concerned data is only the anonymous technical data (e.g., how many debugger steps you did) and not your email if you decide to provide it for future interviews (see the end of these instructions).
 * If in a survey immediately following a task we ask you what you think about "the tool", it concerns "the tool" that you used in the task. If we asked you to used the normal debugger, it is the normal debugger. And so on.
-
+* A rare bug (5% of participations) makes it impossible to click on the *finish task* button in the GUI, allowing to terminate the task. If that happens to you, that is:
+  - You clicked "*finish task*", a popup opened and you filled the fields of the popup,
+  - for *any* reason you closed the popup but the task is not marked "*finished*" and,
+  - you cannot open that popup again, whatever you do clicking on "*finish task*" does not open the popup again.
+In that case, open a playground (in the Pharo top menu bar, click *Browse > Playground*, copy paste the following code then select it and do *right-click > doIt*:
+```Smalltalk
+PhexTaskLauncherPresenter allInstancesDo: [ :i | i writeSlotNamed: #finishModalIsOpen  value: false ].
+```
+This should enable again the *Finish task* button.
 
 ## Your participation
 
