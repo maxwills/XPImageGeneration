@@ -53,15 +53,15 @@ Create a new image:
 
 ![Create a new image](https://raw.githubusercontent.com/Pharo-XP-Tools/xp-free-resources/main/ocd/create-image.png)
 
-In the deprectated distribution list, select Pharo 9 (choose 32 or 64bits depending on your system):
+In the template category list, select Deprecated distributions, then in the template list select Pharo 9 (choose 32 or 64bit depending on your system), and press the `Create image` button at the bottom:
 
 ![Select P9](https://raw.githubusercontent.com/Pharo-XP-Tools/xp-free-resources/main/ocd/select-p9-new.png)
 
 Make sure you have the latest VM for Pharo 9.
-Go to VMs, select the Pharo 9 line, right click and select *update*:
+Go to VMs, select the Pharo 9 line, right click and select `Update`:
 ![Update VM](https://raw.githubusercontent.com/Pharo-XP-Tools/xp-free-resources/main/ocd/vm-update.png)
 
-Select the newly created image in the list then click "start":
+Select the newly created image in the list then click `Launch`:
 
 ![Start image](https://raw.githubusercontent.com/Pharo-XP-Tools/xp-free-resources/main/ocd/start-image.png)
 
