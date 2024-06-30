@@ -49,11 +49,11 @@ However, you are free to use everything you have at your disposal in the Pharo 9
 
 Download and open the Pharo Launcher here: https://pharo.org/download
 
-Create a new image:
+Create a new image **named 'xp'**:
 
 ![Create a new image](https://raw.githubusercontent.com/Pharo-XP-Tools/xp-free-resources/main/ocd/create-image.png)
 
-In the deprectated distribution list, select Pharo 9 (choose 32 or 64bits depending on your system):
+In the deprectated distribution list, select Pharo 9 (choose 32 or 64bits depending on your system) **AND CHANGE THE NAME TO 'xp'**:
 
 ![Select P9](https://raw.githubusercontent.com/Pharo-XP-Tools/xp-free-resources/main/ocd/select-p9-new.png)
 
